@@ -43,21 +43,24 @@ const ParallaxRings = ({ rotation }: { rotation: [number, number, number] }) => 
     { innerR: 2.66, outerR: 2.66 + ringWidth, repeat: 18 },   // gap 0.34 from middle
   ], []);
 
-  // Parallax rotation - each ring rotates at different speeds
+  // Parallax rotation - rings follow coin's X-axis rotation at different speeds
   useFrame((state) => {
     const t = state.clock.elapsedTime;
-    
+
     if (ring1Ref.current) {
-      ring1Ref.current.rotation.x = rotation[0] * 0.5 + Math.sin(t * 0.2) * 0.03;
-      ring1Ref.current.rotation.y = rotation[1] * 0.5 + t * 0.015;
+      // Inner ring - fastest parallax, follows coin rotation most closely
+      ring1Ref.current.rotation.x = rotation[0] * 0.6 + t * 0.12 + Math.sin(t * 0.3) * 0.05;
+      ring1Ref.current.rotation.y = Math.sin(t * 0.2) * 0.08;
     }
     if (ring2Ref.current) {
-      ring2Ref.current.rotation.x = rotation[0] * 0.35 + Math.sin(t * 0.15 + 1) * 0.025;
-      ring2Ref.current.rotation.y = rotation[1] * 0.35 + t * 0.012;
+      // Middle ring - medium parallax
+      ring2Ref.current.rotation.x = rotation[0] * 0.4 + t * 0.09 + Math.sin(t * 0.25 + 1) * 0.04;
+      ring2Ref.current.rotation.y = Math.sin(t * 0.15 + 0.5) * 0.06;
     }
     if (ring3Ref.current) {
-      ring3Ref.current.rotation.x = rotation[0] * 0.2 + Math.sin(t * 0.1 + 2) * 0.02;
-      ring3Ref.current.rotation.y = rotation[1] * 0.2 + t * 0.008;
+      // Outer ring - slowest parallax
+      ring3Ref.current.rotation.x = rotation[0] * 0.25 + t * 0.06 + Math.sin(t * 0.2 + 2) * 0.03;
+      ring3Ref.current.rotation.y = Math.sin(t * 0.1 + 1) * 0.04;
     }
   });
 
@@ -160,14 +163,16 @@ const Coin = ({ rotation, showRings = true, flatView = false }: CoinProps) => {
   useFrame((state) => {
     if (groupRef.current) {
       if (flatView) {
-        // Navbar: face the camera and slowly flip left/right (Y axis)
-        groupRef.current.rotation.x = Math.PI / 2;
-        groupRef.current.rotation.y = rotation[1] + state.clock.elapsedTime * 0.22;
+        // Navbar: face the camera and slowly flip horizontally (X axis)
+        groupRef.current.rotation.x = Math.PI / 2 + state.clock.elapsedTime * 0.22;
+        groupRef.current.rotation.y = 0;
         groupRef.current.rotation.z = 0;
       } else {
-        // Hero: full 3D rotation - start tilted to show face
-        groupRef.current.rotation.x = Math.PI / 2 + rotation[0] + Math.sin(state.clock.elapsedTime * 0.5) * 0.08;
-        groupRef.current.rotation.y = rotation[1] + state.clock.elapsedTime * 0.08;
+        // Hero: rotate around X-axis (horizontal flip) to show both faces
+        // Start with lion facing viewer, then slowly tumble to show both sides
+        groupRef.current.rotation.x = rotation[0] + state.clock.elapsedTime * 0.15;
+        groupRef.current.rotation.y = rotation[1] + Math.sin(state.clock.elapsedTime * 0.3) * 0.1; // subtle wobble
+        groupRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.2) * 0.05; // very subtle tilt
       }
     }
   });
@@ -280,10 +285,10 @@ interface CyrusCoin3DProps {
 }
 
 const CyrusCoin3D = ({ showRings = true, size = "lg" }: CyrusCoin3DProps) => {
-  // Start with lion face showing, tilted to display face prominently
-  // X rotation: Math.PI flips to lion side, -0.3 tilts forward to show more face
-  // Y rotation: slight offset for better initial angle
-  const [rotation, setRotation] = useState<[number, number, number]>([Math.PI - 0.3, 0.2, 0]);
+  // Start with lion face showing perfectly oriented facing the viewer
+  // The coin cylinder has lion on -Y side, so we need rotation.x = -Math.PI/2 to face camera
+  // Adding Math.PI flips to show lion instead of Cyrus portrait
+  const [rotation, setRotation] = useState<[number, number, number]>([-Math.PI / 2 + Math.PI, 0, 0]);
   const isSmall = size === "sm" || size === "md";
 
   const handleRotate = (deltaX: number, deltaY: number) => {
