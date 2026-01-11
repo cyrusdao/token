@@ -1,37 +1,36 @@
 import { motion } from "framer-motion";
-
-const principles = [
-  {
-    number: "01",
-    title: "Religious Tolerance",
-    description:
-      "Cyrus freed the Jewish people from Babylonian captivity and funded the rebuilding of their temple. He permitted all peoples to worship freely. We champion this principle—every faith deserves respect and protection.",
-  },
-  {
-    number: "02",
-    title: "Human Dignity",
-    description:
-      "The Cyrus Cylinder explicitly abolished slavery, recognizing every person's inherent worth. Today, we extend this principle through humanitarian aid—food, water, shelter, and education for all who need it.",
-  },
-  {
-    number: "03",
-    title: "Justice & Equality",
-    description:
-      "Cyrus established laws that applied equally to nobles and servants alike. Our governance follows this model—every CYRUS token holder has an equal voice, and every decision is transparently recorded.",
-  },
-  {
-    number: "04",
-    title: "Cultural Preservation",
-    description:
-      "Rather than erasing conquered cultures, Cyrus celebrated diversity as strength. We preserve Persian heritage—art, philosophy, language—while supporting the traditions of all peoples we serve.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Principles = () => {
+  const { t } = useTranslation();
+
+  const principles = [
+    {
+      number: t('principles.p1Number'),
+      title: t('principles.p1Title'),
+      description: t('principles.p1Desc'),
+    },
+    {
+      number: t('principles.p2Number'),
+      title: t('principles.p2Title'),
+      description: t('principles.p2Desc'),
+    },
+    {
+      number: t('principles.p3Number'),
+      title: t('principles.p3Title'),
+      description: t('principles.p3Desc'),
+    },
+    {
+      number: t('principles.p4Number'),
+      title: t('principles.p4Title'),
+      description: t('principles.p4Desc'),
+    },
+  ];
+
   return (
     <section id="principles" className="py-32 bg-secondary/50 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-section" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
         <motion.div
@@ -42,14 +41,14 @@ const Principles = () => {
           className="text-center mb-6"
         >
           <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-muted-foreground">
-            Core Principles
+            {t('principles.badge')}
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 tracking-wide">
-            Values That
-            <span className="text-gradient-gold"> Endure</span>
+            {t('principles.title')}
+            <span className="text-gradient-gold"> {t('principles.titleHighlight')}</span>
           </h2>
         </motion.div>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,8 +56,7 @@ const Principles = () => {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-center max-w-2xl mx-auto text-muted-foreground font-sans text-lg mb-20"
         >
-          Derived directly from the Cyrus Cylinder, these principles guide every 
-          decision we make as an organization.
+          {t('principles.description')}
         </motion.p>
 
         {/* Principles list - Apple inspired minimal design */}
@@ -96,7 +94,7 @@ const Principles = () => {
               </div>
             </motion.div>
           ))}
-          
+
           {/* Bottom border */}
           <div className="border-t border-border/50" />
         </div>

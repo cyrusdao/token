@@ -1,21 +1,25 @@
 import { Separator } from "@/components/ui/separator";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t, i18n } = useTranslation();
   const currentYear = new Date().getFullYear();
+  const isRTL = i18n.language === "fa";
 
   const links = {
     project: [
-      { name: "Philosophy", href: "#philosophy" },
-      { name: "Persian Empire", href: "#empire" },
-      { name: "Diaspora", href: "#diaspora" },
-      { name: "Tokenomics", href: "#tokenomics" },
-      { name: "FAQ", href: "#faq" },
+      { name: t("nav.philosophy"), href: "#philosophy" },
+      { name: t("nav.empire"), href: "#empire" },
+      { name: t("nav.diaspora"), href: "#diaspora" },
+      { name: t("nav.tokenomics"), href: "#tokenomics" },
+      { name: t("nav.faq"), href: "#faq" },
     ],
     resources: [
-      { name: "Whitepaper", href: "/whitepaper.pdf" },
-      { name: "Audit Report", href: "#" },
-      { name: "Contract Address", href: "#" },
-      { name: "Brand Assets", href: "#" },
+      { name: t("footer.whitepaper"), href: "/whitepaper.pdf" },
+      { name: t("footer.whitepaperFa"), href: "/whitepaper-fa.pdf" },
+      { name: t("footer.auditReport"), href: "#" },
+      { name: t("footer.contractAddress"), href: "#" },
+      { name: t("footer.brandAssets"), href: "#" },
     ],
     ecosystem: [
       { name: "cyrus.ngo", href: "https://cyrus.ngo", external: true },
@@ -45,18 +49,17 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-muted-foreground font-sans text-sm leading-relaxed max-w-xs mb-4">
-              A community token honoring Cyrus the Great's legacy. Founded by the 
-              Cyrus Foundation (cyrus.ngo). Available exclusively on Base blockchain.
+              {t("footer.brand")}
             </p>
             <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-muted-foreground/60">
-              50% DAO Treasury • 10% LP • 40% Public Sale • Base Network
+              {t("footer.distribution")}
             </p>
           </div>
 
           {/* Links */}
           <div>
             <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-6">
-              Project
+              {t("footer.project")}
             </h4>
             <ul className="space-y-3">
               {links.project.map((link) => (
@@ -74,7 +77,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-6">
-              Resources
+              {t("footer.resources")}
             </h4>
             <ul className="space-y-3">
               {links.resources.map((link) => (
@@ -92,7 +95,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-6">
-              Ecosystem
+              {t("footer.ecosystem")}
             </h4>
             <ul className="space-y-3">
               {links.ecosystem.map((link) => (
@@ -112,7 +115,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-6">
-              Social
+              {t("footer.social")}
             </h4>
             <ul className="space-y-3">
               {links.social.map((link) => (
@@ -136,12 +139,7 @@ const Footer = () => {
         {/* Disclaimer */}
         <div className="py-8">
           <p className="text-muted-foreground/60 font-sans text-xs leading-relaxed max-w-4xl">
-            <strong className="text-muted-foreground">Disclaimer:</strong> CYRUS is a community meme token 
-            and is not a security, investment contract, or financial instrument. There is no promise, 
-            expectation, or guarantee of appreciation in value. CYRUS tokens are intended solely for 
-            community participation and governance within the Cyrus DAO ecosystem. Purchase and hold 
-            tokens at your own risk. Always do your own research. Not available to residents of 
-            jurisdictions where prohibited.
+            <strong className="text-muted-foreground">Disclaimer:</strong> {t("footer.disclaimer")}
           </p>
         </div>
 
@@ -150,12 +148,12 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8">
           <div className="flex items-center gap-6 text-muted-foreground/60 font-sans text-xs">
-            <span>© {currentYear} Cyrus Foundation</span>
-            <a href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</a>
-            <a href="/terms" className="hover:text-foreground transition-colors">Terms of Service</a>
+            <span>{t("footer.copyright")}</span>
+            <a href="/privacy" className="hover:text-foreground transition-colors">{t("footer.privacyPolicy")}</a>
+            <a href="/terms" className="hover:text-foreground transition-colors">{t("footer.termsOfService")}</a>
           </div>
           <p className="font-sans text-muted-foreground/60 text-xs">
-            پارسی را نیک دار — Keep Persia Great
+            {t("footer.keepPersiaGreat")}
           </p>
         </div>
       </div>

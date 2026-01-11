@@ -1,19 +1,22 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 
-const stats = [
-  { value: "100%", label: "On-Chain" },
-  { value: "1 Token", label: "1 Vote" },
-  { value: "Open", label: "Proposals" },
-  { value: "Immutable", label: "Records" },
-];
-
 const Governance = () => {
+  const { t } = useTranslation();
+
+  const stats = [
+    { value: t('governance.stat1Value'), label: t('governance.stat1Label') },
+    { value: t('governance.stat2Value'), label: t('governance.stat2Label') },
+    { value: t('governance.stat3Value'), label: t('governance.stat3Label') },
+    { value: t('governance.stat4Value'), label: t('governance.stat4Label') },
+  ];
+
   return (
     <section id="governance" className="py-32 bg-secondary/50 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-section" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left content */}
@@ -24,36 +27,32 @@ const Governance = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-muted-foreground">
-              Decentralized Governance
+              {t('governance.badge')}
             </span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 mb-8 tracking-wide leading-[1.1]">
-              Your Voice.
+              {t('governance.yourVoice')}
               <br />
-              <span className="text-gradient-gold">Your Vote.</span>
+              <span className="text-gradient-gold">{t('governance.yourVote')}</span>
             </h2>
 
             <div className="space-y-6 mb-10">
               <p className="text-muted-foreground font-sans text-lg leading-relaxed">
-                True to Cyrus's vision of distributed power, every CYRUS token holder 
-                governs this organization collectively. No central authority decides 
-                how funds are used—the community does.
+                {t('governance.p1')}
               </p>
               <p className="text-muted-foreground font-sans text-base leading-relaxed">
-                Vote on which villages receive wells. Decide which heritage sites to 
-                restore. Choose which scholarship recipients to support. Every proposal 
-                is debated openly, every vote recorded immutably on-chain.
+                {t('governance.p2')}
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="gold" size="lg" asChild>
                 <a href="https://cyrus.vote" target="_blank" rel="noopener noreferrer">
-                  Cast Your Vote
+                  {t('governance.castVote')}
                   <ExternalLink className="w-4 h-4 ml-2" />
                 </a>
               </Button>
               <Button variant="gold-outline" size="lg">
-                View Proposals
+                {t('governance.viewProposals')}
               </Button>
             </div>
           </motion.div>
@@ -98,7 +97,7 @@ const Governance = () => {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-pahlavi-emerald" />
               </span>
               <span className="font-sans text-sm text-muted-foreground">
-                Governance active at{" "}
+                {t('governance.activeAt')}{" "}
                 <a
                   href="https://cyrus.vote"
                   target="_blank"

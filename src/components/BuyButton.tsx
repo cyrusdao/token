@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAccount, useConnect, useWriteContract, useReadContract, useWaitForTransactionReceipt, useSwitchChain, useChainId } from 'wagmi';
 import { base } from 'wagmi/chains';
 import { Button } from '@/components/ui/button';
@@ -16,6 +17,7 @@ const IS_LOCAL = import.meta.env.VITE_LOCAL === 'true';
 const EXPECTED_CHAIN_ID = IS_LOCAL ? 31337 : base.id;
 
 export default function BuyButton() {
+  const { t } = useTranslation();
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
   const chainId = useChainId();
@@ -227,7 +229,7 @@ export default function BuyButton() {
       <div className="mb-4 p-3 rounded-lg bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-400/30">
         <div className="flex items-center justify-center gap-2 text-amber-300">
           <Sparkles className="w-4 h-4" />
-          <span className="text-sm font-medium">Early buyers get more tokens!</span>
+          <span className="text-sm font-medium">{t('buyButton.earlyBuyers')}</span>
           <Sparkles className="w-4 h-4" />
         </div>
       </div>
@@ -236,22 +238,22 @@ export default function BuyButton() {
       <div className="mb-6 text-center">
         <div className="flex items-center justify-center gap-2 text-amber-400 mb-2">
           <TrendingUp className="w-5 h-5" />
-          <span className="text-sm font-medium">Quadratic Bonding Curve</span>
+          <span className="text-sm font-medium">{t('buyButton.bondingCurve')}</span>
         </div>
         <p className="text-3xl font-bold text-white">
           {formattedPrice}
         </p>
-        <p className="text-sm text-amber-300/70">per CYRUS token</p>
+        <p className="text-sm text-amber-300/70">{t('buyButton.perToken')}</p>
         <p className="text-xs text-amber-300/50 mt-1">
-          Price rises from $0.01 to $1.00
+          {t('buyButton.priceRange')}
         </p>
       </div>
 
       {/* Progress Bar */}
       <div className="mb-6">
         <div className="flex justify-between text-sm text-amber-300/70 mb-2">
-          <span>{progress.toFixed(2)}% sold</span>
-          <span>${formattedUsdtRaised} raised</span>
+          <span>{progress.toFixed(2)}% {t('buyButton.sold')}</span>
+          <span>${formattedUsdtRaised} {t('buyButton.raised')}</span>
         </div>
         <div className="h-3 bg-amber-950 rounded-full overflow-hidden">
           <div
@@ -273,7 +275,7 @@ export default function BuyButton() {
           className="w-full h-14 text-lg font-bold bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 border-0 shadow-lg shadow-amber-500/25"
         >
           <Wallet className="w-6 h-6 mr-2" />
-          Connect Wallet
+          {t('buyButton.connectWallet')}
         </Button>
       ) : chainId !== EXPECTED_CHAIN_ID ? (
         /* Wrong network */
@@ -283,28 +285,28 @@ export default function BuyButton() {
           className="w-full h-14 text-lg font-bold bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400"
         >
           <AlertCircle className="w-6 h-6 mr-2" />
-          Switch to {IS_LOCAL ? 'Localhost' : 'Base'}
+          {t('buyButton.switchTo')} {IS_LOCAL ? 'Localhost' : 'Base'}
         </Button>
       ) : !saleActive ? (
         /* Sale not active */
         <Button size="lg" disabled className="w-full h-14 text-lg font-bold bg-gray-600">
-          Sale Complete
+          {t('buyButton.saleComplete')}
         </Button>
       ) : isPending || isConfirming ? (
         /* Transaction pending */
         <Button size="lg" disabled className="w-full h-14 text-lg font-bold bg-gradient-to-r from-amber-600 to-yellow-500">
           <Loader2 className="w-6 h-6 mr-2 animate-spin" />
-          {isApprovePending ? 'Approve USDT...' :
-           isApproveConfirming ? 'Approving...' :
-           isBuyPending ? 'Confirm Purchase...' :
-           'Processing...'}
+          {isApprovePending ? t('buyButton.approveUsdt') :
+           isApproveConfirming ? t('buyButton.approving') :
+           isBuyPending ? t('buyButton.confirmPurchase') :
+           t('buyButton.processing')}
         </Button>
       ) : isBuySuccess && buyHash ? (
         /* Success */
         <div className="text-center">
           <Button size="lg" disabled className="w-full h-14 text-lg font-bold bg-green-600 mb-4">
             <Check className="w-6 h-6 mr-2" />
-            Purchase Complete!
+            {t('buyButton.purchaseComplete')}
           </Button>
           <a
             href={`https://basescan.org/tx/${buyHash}`}
@@ -312,7 +314,7 @@ export default function BuyButton() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-amber-400 hover:text-amber-300"
           >
-            View on Basescan <ExternalLink className="w-4 h-4" />
+            {t('buyButton.viewOnBasescan')} <ExternalLink className="w-4 h-4" />
           </a>
         </div>
       ) : (
@@ -321,12 +323,12 @@ export default function BuyButton() {
           <div>
             <div className="flex justify-between items-center mb-2">
               <label className="block text-sm font-medium text-amber-300">
-                Amount (USDT)
+                {t('buyButton.amountUsdt')}
               </label>
               {isConnected && (
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-amber-300/60">
-                    Balance: {formattedUsdtBalance} USDT
+                    {t('buyButton.balance')}: {formattedUsdtBalance} USDT
                   </span>
                   {IS_LOCAL && (
                     <button
@@ -335,7 +337,7 @@ export default function BuyButton() {
                       className="text-xs px-2 py-0.5 rounded bg-green-600/80 hover:bg-green-500 text-white transition-colors flex items-center gap-1"
                     >
                       <Droplets className="w-3 h-3" />
-                      {isFaucetPending ? '...' : 'Faucet'}
+                      {isFaucetPending ? '...' : t('buyButton.faucet')}
                     </button>
                   )}
                 </div>
@@ -353,7 +355,7 @@ export default function BuyButton() {
           </div>
 
           <div className="p-3 rounded-lg bg-amber-950/30 border border-amber-500/20">
-            <p className="text-sm text-amber-300/70">You will receive approximately:</p>
+            <p className="text-sm text-amber-300/70">{t('buyButton.willReceive')}</p>
             <p className="text-xl font-bold text-white">{formattedTokens} CYRUS</p>
           </div>
 
@@ -364,13 +366,13 @@ export default function BuyButton() {
             className="w-full h-14 text-lg font-bold bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 border-0 shadow-lg shadow-amber-500/25 transition-all hover:scale-[1.02]"
           >
             <Crown className="w-6 h-6 mr-2" />
-            {needsApproval ? 'Approve & Buy CYRUS' : 'Buy CYRUS'}
+            {needsApproval ? t('buyButton.approveAndBuy') : t('common.buyCyrus')}
           </Button>
 
           {error && (
             <p className="text-red-400 text-sm flex items-center gap-2">
               <AlertCircle className="w-4 h-4" />
-              {error.message.includes('rejected') ? 'Transaction rejected' : 'Error occurred'}
+              {error.message.includes('rejected') ? t('buyButton.transactionRejected') : t('buyButton.errorOccurred')}
             </p>
           )}
         </div>
@@ -379,7 +381,7 @@ export default function BuyButton() {
       {/* Balance display */}
       {isConnected && balance && (
         <div className="mt-4 pt-4 border-t border-amber-500/20 text-center">
-          <p className="text-sm text-amber-300/70">Your Balance</p>
+          <p className="text-sm text-amber-300/70">{t('buyButton.yourBalance')}</p>
           <p className="text-lg font-bold text-white">
             {Number(formatUnits(balance, CYRUS_DECIMALS)).toLocaleString()} CYRUS
           </p>

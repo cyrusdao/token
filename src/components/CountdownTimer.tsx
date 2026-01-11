@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 interface CountdownTimerProps {
   targetDate: string;
@@ -12,6 +13,7 @@ interface TimeLeft {
 }
 
 const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -40,10 +42,10 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
   }, [targetDate]);
 
   const timeUnits = [
-    { label: "Days", value: timeLeft.days },
-    { label: "Hours", value: timeLeft.hours },
-    { label: "Min", value: timeLeft.minutes },
-    { label: "Sec", value: timeLeft.seconds },
+    { label: t('countdown.days'), value: timeLeft.days },
+    { label: t('countdown.hours'), value: timeLeft.hours },
+    { label: t('countdown.min'), value: timeLeft.minutes },
+    { label: t('countdown.sec'), value: timeLeft.seconds },
   ];
 
   return (

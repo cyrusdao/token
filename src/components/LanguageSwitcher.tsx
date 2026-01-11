@@ -1,13 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
-  const toggleLanguage = () => {
-    const newLang = i18n.language === "fa" ? "en" : "fa";
-    i18n.changeLanguage(newLang);
+  const setLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
   };
 
   // Update document direction and lang attribute when language changes
@@ -24,15 +22,36 @@ const LanguageSwitcher = () => {
     }
   }, [i18n.language]);
 
+  const isEnglish = i18n.language === "en";
+  const isFarsi = i18n.language === "fa";
+
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={toggleLanguage}
-      className="font-mono text-xs tracking-wider px-3 py-1 h-8 glass glass-border hover:border-pahlavi-gold/30"
-    >
-      {i18n.language === "fa" ? "EN" : "FA"}
-    </Button>
+    <div className="flex items-center glass glass-border rounded-full p-0.5">
+      <button
+        onClick={() => setLanguage("en")}
+        className={`
+          px-3 py-1 text-xs font-mono tracking-wider rounded-full transition-all duration-200
+          ${isEnglish
+            ? "bg-pahlavi-gold text-background"
+            : "text-muted-foreground hover:text-foreground"
+          }
+        `}
+      >
+        EN
+      </button>
+      <button
+        onClick={() => setLanguage("fa")}
+        className={`
+          px-3 py-1 text-xs font-mono tracking-wider rounded-full transition-all duration-200
+          ${isFarsi
+            ? "bg-pahlavi-gold text-background"
+            : "text-muted-foreground hover:text-foreground"
+          }
+        `}
+      >
+        FA
+      </button>
+    </div>
   );
 };
 

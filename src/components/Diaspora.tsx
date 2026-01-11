@@ -1,39 +1,42 @@
 import { motion } from "framer-motion";
 import { Globe, Users, Building, Heart } from "lucide-react";
-
-const diasporaData = [
-  {
-    region: "United States",
-    population: "~1.5 million",
-    note: "Largest diaspora community, concentrated in Los Angeles ('Tehrangeles'), New York, and Washington D.C.",
-  },
-  {
-    region: "Europe",
-    population: "~500,000+",
-    note: "Significant communities in Germany, United Kingdom, France, Sweden, and the Netherlands.",
-  },
-  {
-    region: "Canada",
-    population: "~400,000",
-    note: "Major communities in Toronto and Vancouver, with strong cultural institutions.",
-  },
-  {
-    region: "Middle East",
-    population: "~300,000+",
-    note: "Communities in UAE, Turkey, and other regional countries.",
-  },
-  {
-    region: "Australia",
-    population: "~100,000",
-    note: "Growing community primarily in Sydney and Melbourne.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Diaspora = () => {
+  const { t } = useTranslation();
+
+  const diasporaData = [
+    {
+      region: t("diaspora.region1"),
+      population: t("diaspora.region1Pop"),
+      note: t("diaspora.region1Note"),
+    },
+    {
+      region: t("diaspora.region2"),
+      population: t("diaspora.region2Pop"),
+      note: t("diaspora.region2Note"),
+    },
+    {
+      region: t("diaspora.region3"),
+      population: t("diaspora.region3Pop"),
+      note: t("diaspora.region3Note"),
+    },
+    {
+      region: t("diaspora.region4"),
+      population: t("diaspora.region4Pop"),
+      note: t("diaspora.region4Note"),
+    },
+    {
+      region: t("diaspora.region5"),
+      population: t("diaspora.region5Pop"),
+      note: t("diaspora.region5Note"),
+    },
+  ];
+
   return (
     <section id="diaspora" className="py-32 bg-secondary/50 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-section" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
         <motion.div
@@ -44,14 +47,14 @@ const Diaspora = () => {
           className="text-center mb-6"
         >
           <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-muted-foreground">
-            Global Community
+            {t("diaspora.badge")}
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 tracking-wide text-balance">
-            The Persian
-            <span className="text-gradient-gold"> Diaspora</span>
+            {t("diaspora.title")}
+            <span className="text-gradient-gold"> {t("diaspora.titleHighlight")}</span>
           </h2>
         </motion.div>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,18 +62,16 @@ const Diaspora = () => {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-center max-w-3xl mx-auto text-muted-foreground font-sans text-lg mb-20"
         >
-          An estimated 4-5 million Iranians live outside of Iran, forming one of the 
-          world's most accomplished diaspora communities. From Silicon Valley to 
-          Hollywood, from academia to medicine, Iranians contribute to societies worldwide.
+          {t("diaspora.description")}
         </motion.p>
 
         {/* Icon stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
           {[
-            { icon: Globe, value: "80+", label: "Countries" },
-            { icon: Users, value: "4-5M", label: "Diaspora Population" },
-            { icon: Building, value: "3,000+", label: "Years of Civilization" },
-            { icon: Heart, value: "1", label: "Shared Heritage" },
+            { icon: Globe, value: "80+", label: t("diaspora.countries") },
+            { icon: Users, value: "4-5M", label: t("diaspora.population") },
+            { icon: Building, value: "3,000+", label: t("diaspora.civilization") },
+            { icon: Heart, value: "1", label: t("diaspora.heritage") },
           ].map((item, index) => (
             <motion.div
               key={item.label}
@@ -97,7 +98,7 @@ const Diaspora = () => {
         <div className="max-w-4xl mx-auto space-y-0">
           {diasporaData.map((item, index) => (
             <motion.div
-              key={item.region}
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -133,12 +134,10 @@ const Diaspora = () => {
           className="mt-20 text-center max-w-3xl mx-auto"
         >
           <p className="text-foreground font-sans text-xl leading-relaxed mb-4">
-            CYRUS unites this global community through shared values and collective action.
+            {t("diaspora.unityMessage")}
           </p>
           <p className="text-muted-foreground font-sans text-base leading-relaxed">
-            Whether you're in Los Angeles, London, or Tehran—the Cyrus DAO empowers 
-            every token holder to vote on initiatives that preserve Persian heritage, 
-            support humanitarian causes, and spread Cyrus's message of tolerance.
+            {t("diaspora.unityDescription")}
           </p>
         </motion.div>
       </div>

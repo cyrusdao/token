@@ -1,17 +1,20 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-
-const tokenomics = [
-  { percentage: "50%", label: "DAO Treasury", description: "Community-controlled treasury for cultural preservation, Persian language schools, humanitarian initiatives, and ecosystem development." },
-  { percentage: "10%", label: "Liquidity Pool", description: "Initial DEX liquidity on Base blockchain, ensuring smooth trading from day one." },
-  { percentage: "40%", label: "Public Sale", description: "Fair public distribution via bonding curve. No team allocation, no VC rounds, no pre-sale." },
-];
+import { useTranslation } from "react-i18next";
 
 const Tokenomics = () => {
+  const { t } = useTranslation();
+
+  const tokenomicsData = [
+    { percentage: "50%", label: t("tokenomics.daoTreasury"), description: t("tokenomics.daoTreasuryDesc") },
+    { percentage: "10%", label: t("tokenomics.liquidityPool"), description: t("tokenomics.liquidityPoolDesc") },
+    { percentage: "40%", label: t("tokenomics.publicSale"), description: t("tokenomics.publicSaleDesc") },
+  ];
+
   return (
     <section id="tokenomics" className="py-32 bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-section" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
         <motion.div
@@ -22,14 +25,14 @@ const Tokenomics = () => {
           className="text-center mb-6"
         >
           <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-muted-foreground">
-            Token Distribution
+            {t("tokenomics.badge")}
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 tracking-wide text-balance">
-            CYRUS
-            <span className="text-gradient-gold"> Tokenomics</span>
+            {t("tokenomics.title")}
+            <span className="text-gradient-gold"> {t("tokenomics.titleHighlight")}</span>
           </h2>
         </motion.div>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,8 +40,7 @@ const Tokenomics = () => {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-center max-w-2xl mx-auto text-muted-foreground font-sans text-lg mb-16"
         >
-          1 billion CYRUS tokens. Fixed supply. No minting. No burning. 
-          Transparent distribution governed by the community.
+          {t("tokenomics.description")}
         </motion.p>
 
         {/* Token specs */}
@@ -53,10 +55,10 @@ const Tokenomics = () => {
             <CardContent className="p-8">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 {[
-                  { label: "Token Name", value: "CYRUS" },
-                  { label: "Total Supply", value: "1,000,000,000" },
-                  { label: "Blockchain", value: "Base (Coinbase)" },
-                  { label: "Token Type", value: "ERC-20" },
+                  { label: t("tokenomics.tokenName"), value: "CYRUS" },
+                  { label: t("tokenomics.totalSupply"), value: "1,000,000,000" },
+                  { label: t("tokenomics.blockchain"), value: "Base (Coinbase)" },
+                  { label: t("tokenomics.tokenType"), value: "ERC-20" },
                 ].map((item) => (
                   <div key={item.label}>
                     <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2">
@@ -74,9 +76,9 @@ const Tokenomics = () => {
 
         {/* Distribution */}
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {tokenomics.map((item, index) => (
+          {tokenomicsData.map((item, index) => (
             <motion.div
-              key={item.label}
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -110,24 +112,24 @@ const Tokenomics = () => {
           <Card className="bg-secondary/50 border-border/50">
             <CardContent className="p-6">
               <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-4">
-                Important Information
+                {t("tokenomics.importantInfo")}
               </h4>
               <ul className="space-y-2 text-muted-foreground font-sans text-sm">
                 <li className="flex items-start gap-2">
                   <span className="text-pahlavi-gold">•</span>
-                  CYRUS is a community token for coordination and governance, not a security or investment.
+                  {t("tokenomics.notice1")}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-pahlavi-gold">•</span>
-                  No expectation of profit. Tokens may become worthless. Purchase at your own risk.
+                  {t("tokenomics.notice2")}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-pahlavi-gold">•</span>
-                  No team allocation. No VC rounds. No pre-sale. 50% DAO, 10% LP, 40% public.
+                  {t("tokenomics.notice3")}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-pahlavi-gold">•</span>
-                  Treasury funded by sale proceeds, governed transparently by token holders.
+                  {t("tokenomics.notice4")}
                 </li>
               </ul>
             </CardContent>

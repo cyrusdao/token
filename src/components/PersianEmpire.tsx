@@ -1,34 +1,37 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import achaemenidMap from "@/assets/achaemenid-map.jpeg";
 
-const historicalFacts = [
-  {
-    stat: "550–330 BCE",
-    label: "Achaemenid Empire",
-    description: "The first Persian Empire, founded by Cyrus the Great, lasted over 200 years and became the largest empire the ancient world had ever seen.",
-  },
-  {
-    stat: "5.5M km²",
-    label: "Empire Territory",
-    description: "At its peak under Darius I, the Achaemenid Empire spanned from Egypt and Libya in the west to the Indus River in the east—44% of the world's population.",
-  },
-  {
-    stat: "539 BCE",
-    label: "Babylon Conquered",
-    description: "Cyrus peacefully entered Babylon and freed the Jewish people from captivity, allowing them to return home and rebuild their temple in Jerusalem.",
-  },
-  {
-    stat: "23",
-    label: "Satrapies (Provinces)",
-    description: "The empire was divided into provinces, each with local autonomy—a revolutionary form of governance that respected diverse cultures and religions.",
-  },
-];
-
 const PersianEmpire = () => {
+  const { t } = useTranslation();
+
+  const historicalFacts = [
+    {
+      stat: t("empire.stat1"),
+      label: t("empire.stat1Label"),
+      description: t("empire.stat1Desc"),
+    },
+    {
+      stat: t("empire.stat2"),
+      label: t("empire.stat2Label"),
+      description: t("empire.stat2Desc"),
+    },
+    {
+      stat: t("empire.stat3"),
+      label: t("empire.stat3Label"),
+      description: t("empire.stat3Desc"),
+    },
+    {
+      stat: t("empire.stat4"),
+      label: t("empire.stat4Label"),
+      description: t("empire.stat4Desc"),
+    },
+  ];
+
   return (
     <section id="empire" className="py-32 bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-section" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         {/* Section header */}
         <motion.div
@@ -39,14 +42,14 @@ const PersianEmpire = () => {
           className="text-center mb-6"
         >
           <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-muted-foreground">
-            Historical Legacy
+            {t("empire.badge")}
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mt-4 tracking-wide text-balance">
-            The First
-            <span className="text-gradient-gold"> World Empire</span>
+            {t("empire.title")}
+            <span className="text-gradient-gold"> {t("empire.titleHighlight")}</span>
           </h2>
         </motion.div>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,9 +57,7 @@ const PersianEmpire = () => {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-center max-w-3xl mx-auto text-muted-foreground font-sans text-lg mb-16"
         >
-          The Achaemenid Empire established by Cyrus the Great was not just the largest 
-          empire of the ancient world—it was the first to embrace religious tolerance, 
-          cultural diversity, and human rights as governing principles.
+          {t("empire.description")}
         </motion.p>
 
         {/* Historical Map */}
@@ -68,9 +69,9 @@ const PersianEmpire = () => {
           className="mb-20"
         >
           <div className="relative max-w-5xl mx-auto">
-            <img 
-              src={achaemenidMap} 
-              alt="Ancient Persia - Achaemenid Empire map showing territories from the Black Sea to the Persian Gulf" 
+            <img
+              src={achaemenidMap}
+              alt={t("empire.mapAlt")}
               className="w-full h-auto rounded-lg shadow-2xl"
             />
             {/* Subtle golden overlay for brand consistency */}
@@ -82,7 +83,7 @@ const PersianEmpire = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {historicalFacts.map((fact, index) => (
             <motion.div
-              key={fact.label}
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

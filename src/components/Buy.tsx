@@ -1,7 +1,25 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import BuyButton from "./BuyButton";
 
 const Buy = () => {
+  const { t } = useTranslation();
+
+  const infoCards = [
+    {
+      title: t("buy.payWithUsdt"),
+      description: t("buy.payWithUsdtDesc"),
+    },
+    {
+      title: t("buy.quadraticCurve"),
+      description: t("buy.quadraticCurveDesc"),
+    },
+    {
+      title: t("buy.noLimits"),
+      description: t("buy.noLimitsDesc"),
+    },
+  ];
+
   return (
     <section id="buy" className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-background to-amber-950/20">
       {/* Background decoration */}
@@ -17,14 +35,13 @@ const Buy = () => {
         >
           <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase text-amber-400 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-            Bonding Curve Sale
+            {t("buy.badge")}
           </span>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
-            Acquire <span className="text-gradient-gold">CYRUS</span>
+            {t("buy.title")} <span className="text-gradient-gold">{t("buy.titleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Join the legacy of Cyrus the Great. Pay with USDT on Base—price rises from $0.01 to $1.00
-            as tokens are sold. Early buyers get 100x more tokens! No limits.
+            {t("buy.description")}
           </p>
         </motion.div>
 
@@ -46,20 +63,7 @@ const Buy = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="grid md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto"
         >
-          {[
-            {
-              title: "Pay with USDT",
-              description: "Buy CYRUS with USDT (USDbC) on Base—stable pricing in dollars"
-            },
-            {
-              title: "Quadratic Curve",
-              description: "Price rises from $0.01 to $1.00—early buyers get 100x more tokens"
-            },
-            {
-              title: "No Limits",
-              description: "Buy as much CYRUS as you want—no per-wallet restrictions"
-            }
-          ].map((item, i) => (
+          {infoCards.map((item, i) => (
             <div
               key={i}
               className="p-6 rounded-xl bg-amber-950/30 border border-amber-500/20 backdrop-blur-sm"

@@ -1,14 +1,10 @@
 import { motion } from "framer-motion";
 import { Linkedin, Instagram, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface TeamMember {
-  name: string;
-  nameFa: string;
-  role: string;
-  roleFa: string;
+  id: string;
   image: string;
-  bio: string;
-  bioFa: string;
   links: {
     website?: string;
     linkedin?: string;
@@ -18,13 +14,8 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Cyrus Pahlavi",
-    nameFa: "سایروس پهلوی",
-    role: "Founding Chair",
-    roleFa: "رئیس بنیان‌گذار",
+    id: "cyrus",
     image: "/assets/images/cyrus-pahlavi.png",
-    bio: "Leading the CYRUS Foundation with a vision of uniting the Persian diaspora and preserving our cultural heritage for future generations.",
-    bioFa: "رهبری بنیاد سایروس با چشم‌انداز متحد کردن ایرانیان در سراسر جهان و حفظ میراث فرهنگی ما برای نسل‌های آینده.",
     links: {
       website: "https://www.cyruspahlavi.com/about",
       instagram: "https://www.instagram.com/cyruspahlavi",
@@ -32,25 +23,15 @@ const teamMembers: TeamMember[] = [
     },
   },
   {
-    name: "Kamran Pahlavi",
-    nameFa: "کامران پهلوی",
-    role: "Board Member",
-    roleFa: "عضو هیئت مدیره",
+    id: "kamran",
     image: "/assets/images/kamran-pahlavi.jpg",
-    bio: "Dedicated to advancing Persian cultural initiatives and supporting the global Iranian community through strategic leadership.",
-    bioFa: "متعهد به پیشبرد ابتکارات فرهنگی ایرانی و حمایت از جامعه جهانی ایرانیان از طریق رهبری استراتژیک.",
     links: {
       instagram: "https://www.instagram.com/kamranpahlavi",
     },
   },
   {
-    name: "Dara Gallopin",
-    nameFa: "دارا گالوپین",
-    role: "Creative Officer",
-    roleFa: "مدیر خلاقیت",
+    id: "dara",
     image: "/assets/images/dara-gallopin.png",
-    bio: "Bringing creative vision to the CYRUS brand, ensuring our message resonates with Persians worldwide through compelling storytelling and design.",
-    bioFa: "آوردن چشم‌انداز خلاقانه به برند سایروس، اطمینان از اینکه پیام ما از طریق داستان‌سرایی و طراحی جذاب با ایرانیان سراسر جهان همخوانی دارد.",
     links: {
       website: "https://www.daragallopin.com/",
       instagram: "https://www.instagram.com/daragallopin",
@@ -60,6 +41,9 @@ const teamMembers: TeamMember[] = [
 ];
 
 const Leadership = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === "fa";
+
   return (
     <section id="leadership" className="relative py-24 overflow-hidden bg-background">
       {/* Background pattern */}
@@ -75,16 +59,13 @@ const Leadership = () => {
           className="text-center mb-16"
         >
           <span className="inline-block font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-4">
-            Founding Team
+            {t("leadership.badge")}
           </span>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
-            <span className="text-gradient-gold">Leadership</span>
+            <span className="text-gradient-gold">{t("leadership.title")}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            The CYRUS Foundation is led by dedicated individuals committed to the
-            preservation of Persian heritage and the empowerment of the global diaspora.
-            Initial stewardship by the Pahlavi family with planned transition to
-            full public governance.
+            {t("leadership.description")}
           </p>
         </motion.div>
 
@@ -92,7 +73,7 @@ const Leadership = () => {
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
             <motion.div
-              key={member.name}
+              key={member.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -104,7 +85,7 @@ const Leadership = () => {
                 <div className="relative w-32 h-32 mb-6 rounded-full overflow-hidden border-2 border-pahlavi-gold/20 group-hover:border-pahlavi-gold/50 transition-colors">
                   <img
                     src={member.image}
-                    alt={member.name}
+                    alt={t(`team.${member.id}.name`)}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -112,15 +93,15 @@ const Leadership = () => {
 
                 {/* Name & Role */}
                 <h3 className="font-display text-xl text-foreground mb-1">
-                  {member.name}
+                  {t(`team.${member.id}.name`)}
                 </h3>
                 <p className="font-mono text-xs tracking-wider text-pahlavi-gold uppercase mb-4">
-                  {member.role}
+                  {t(`team.${member.id}.role`)}
                 </p>
 
                 {/* Bio */}
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
-                  {member.bio}
+                  {t(`team.${member.id}.bio`)}
                 </p>
 
                 {/* Social Links */}
@@ -131,7 +112,7 @@ const Leadership = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 rounded-full glass glass-border hover:border-pahlavi-gold/50 transition-colors"
-                      aria-label={`${member.name}'s website`}
+                      aria-label={`${t(`team.${member.id}.name`)}'s website`}
                     >
                       <Globe className="w-4 h-4 text-muted-foreground hover:text-pahlavi-gold transition-colors" />
                     </a>
@@ -142,7 +123,7 @@ const Leadership = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 rounded-full glass glass-border hover:border-pahlavi-gold/50 transition-colors"
-                      aria-label={`${member.name}'s LinkedIn`}
+                      aria-label={`${t(`team.${member.id}.name`)}'s LinkedIn`}
                     >
                       <Linkedin className="w-4 h-4 text-muted-foreground hover:text-pahlavi-gold transition-colors" />
                     </a>
@@ -153,7 +134,7 @@ const Leadership = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 rounded-full glass glass-border hover:border-pahlavi-gold/50 transition-colors"
-                      aria-label={`${member.name}'s Instagram`}
+                      aria-label={`${t(`team.${member.id}.name`)}'s Instagram`}
                     >
                       <Instagram className="w-4 h-4 text-muted-foreground hover:text-pahlavi-gold transition-colors" />
                     </a>
@@ -174,11 +155,8 @@ const Leadership = () => {
         >
           <div className="glass glass-border rounded-xl p-6 max-w-2xl mx-auto">
             <p className="text-muted-foreground text-sm">
-              <span className="text-pahlavi-gold font-semibold">Public Stewardship:</span>{" "}
-              The founding board, led by members of the Pahlavi family, will guide CYRUS
-              through its first two years. Additional board members may be selected at
-              board discretion. A planned transition to full public governance will follow,
-              ensuring the community ultimately controls its own destiny.
+              <span className="text-pahlavi-gold font-semibold">{t("leadership.publicStewardship")}</span>{" "}
+              {t("leadership.publicStewardshipText")}
             </p>
           </div>
         </motion.div>

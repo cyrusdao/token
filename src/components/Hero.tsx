@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Coins, FileText } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import CyrusCoin3D from "./CyrusCoin3D";
 
 const Hero = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === "fa";
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-background">
       {/* Ambient gradient glow */}
@@ -38,7 +41,7 @@ const Hero = () => {
           >
             <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase text-muted-foreground glass glass-border px-4 py-2 rounded-full pointer-events-auto">
               <span className="w-1.5 h-1.5 rounded-full bg-pahlavi-emerald animate-pulse" />
-              Founded by Cyrus Foundation
+              {t("hero.badge")}
             </span>
           </motion.div>
 
@@ -49,9 +52,9 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground mb-6 leading-[1.05] tracking-wide text-balance drop-shadow-lg"
           >
-            The Spirit of
+            {t("hero.title1")}
             <br />
-            <span className="text-gradient-gold">Cyrus Lives On</span>
+            <span className="text-gradient-gold">{t("hero.title2")}</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -61,10 +64,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="max-w-xl text-muted-foreground text-lg md:text-xl mb-8 font-sans leading-relaxed drop-shadow-md"
           >
-            A community-first token unifying the global Persian diaspora around the
-            timeless principles of Cyrus the Great—freedom, tolerance, and human dignity.
-            100% diaspora owned. 50% secured by DAO for long-term public governance.
-            No VC. No pre-sale.
+            {t("hero.description")}
           </motion.p>
 
           {/* Token info */}
@@ -75,10 +75,10 @@ const Hero = () => {
             className="flex flex-wrap gap-6 mb-10"
           >
             {[
-              { value: "1B", label: "Supply" },
-              { value: "Base", label: "Blockchain" },
-              { value: "100%", label: "Diaspora" },
-              { value: "50%", label: "DAO Secured" },
+              { value: "1B", label: t("hero.supply") },
+              { value: "Base", label: t("hero.blockchain") },
+              { value: "100%", label: t("hero.diaspora") },
+              { value: "50%", label: t("hero.daoSecured") },
             ].map((stat) => (
               <div key={stat.label} className="text-left">
                 <div className="font-display text-2xl md:text-3xl text-foreground tracking-wide drop-shadow-md">
@@ -100,11 +100,11 @@ const Hero = () => {
           >
             <Button variant="hero" size="lg" onClick={() => document.getElementById('buy')?.scrollIntoView({ behavior: 'smooth' })}>
               <Coins className="w-5 h-5" />
-              Buy CYRUS
+              {t("common.buyCyrus")}
             </Button>
-            <Button variant="hero-outline" size="lg" className="border-2 border-foreground/40 hover:border-foreground/70" onClick={() => window.open('/whitepaper.pdf', '_blank')}>
+            <Button variant="hero-outline" size="lg" className="border-2 border-foreground/40 hover:border-foreground/70" onClick={() => window.open(isRTL ? '/whitepaper-fa.pdf' : '/whitepaper.pdf', '_blank')}>
               <FileText className="w-5 h-5" />
-              Read Whitepaper
+              {t("common.readWhitepaper")}
             </Button>
           </motion.div>
           
@@ -115,8 +115,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="mt-6 text-[11px] text-muted-foreground/60 max-w-md"
           >
-            CYRUS is a community meme token. Not a security. No promise of appreciation. 
-            Available exclusively on Coinbase Base.
+            {t("hero.disclaimer")}
           </motion.p>
         </div>
       </div>
@@ -134,7 +133,7 @@ const Hero = () => {
           className="flex flex-col items-center gap-2"
         >
           <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
-            Scroll
+            {t("common.scroll")}
           </span>
           <ChevronDown className="text-muted-foreground w-5 h-5" />
         </motion.div>
