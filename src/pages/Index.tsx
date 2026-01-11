@@ -8,6 +8,7 @@ import Principles from "@/components/Principles";
 import HowToHelp from "@/components/HowToHelp";
 import Tokenomics from "@/components/Tokenomics";
 import Governance from "@/components/Governance";
+import Leadership from "@/components/Leadership";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
@@ -24,6 +25,7 @@ const Index = () => {
       <HowToHelp />
       <Tokenomics />
       <Governance />
+      <Leadership />
       <FAQ />
       <Footer />
     </div>

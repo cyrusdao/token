@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Coins } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 import cyrusCoinFace from "@/assets/cyrus-coin-face.png";
 import freedomLion from "@/assets/freedom-lion.png";
 import coinEdgeTexture from "@/assets/coin-edge.png";
@@ -9,6 +11,7 @@ import coinEdgeTexture from "@/assets/coin-edge.png";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -17,11 +20,11 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Philosophy", href: "#philosophy" },
-    { name: "Empire", href: "#empire" },
-    { name: "Diaspora", href: "#diaspora" },
-    { name: "Tokenomics", href: "#tokenomics" },
-    { name: "FAQ", href: "#faq" },
+    { name: t("nav.philosophy"), href: "#philosophy" },
+    { name: t("nav.empire"), href: "#empire" },
+    { name: t("nav.diaspora"), href: "#diaspora" },
+    { name: t("nav.tokenomics"), href: "#tokenomics" },
+    { name: t("nav.faq"), href: "#faq" },
   ];
 
   return (
@@ -91,9 +94,10 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher />
             <Button variant="gold" size="sm" className="font-sans font-bold">
               <Coins className="w-4 h-4" />
-              Mint
+              {t("common.mint")}
             </Button>
           </div>
 
@@ -127,9 +131,12 @@ const Navbar = () => {
                   </a>
                 ))}
                 <div className="pt-6 flex flex-col gap-3">
+                  <div className="flex justify-center pb-2">
+                    <LanguageSwitcher />
+                  </div>
                   <Button variant="gold" className="w-full font-sans font-bold">
                     <Coins className="w-4 h-4" />
-                    Mint
+                    {t("common.mint")}
                   </Button>
                 </div>
               </div>

@@ -63,7 +63,8 @@ const Hero = () => {
           >
             A community-first token unifying the global Persian diaspora around the
             timeless principles of Cyrus the Great—freedom, tolerance, and human dignity.
-            50% DAO, 40% public sale. No team allocation. No VC. No pre-sale.
+            100% diaspora owned. 50% secured by DAO for long-term public governance.
+            No VC. No pre-sale.
           </motion.p>
 
           {/* Token info */}
@@ -76,8 +77,8 @@ const Hero = () => {
             {[
               { value: "1B", label: "Supply" },
               { value: "Base", label: "Blockchain" },
-              { value: "50%", label: "DAO" },
-              { value: "40%", label: "Public" },
+              { value: "100%", label: "Diaspora" },
+              { value: "50%", label: "DAO Secured" },
             ].map((stat) => (
               <div key={stat.label} className="text-left">
                 <div className="font-display text-2xl md:text-3xl text-foreground tracking-wide drop-shadow-md">

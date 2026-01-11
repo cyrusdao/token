@@ -1,0 +1,105 @@
+{
+  "common": {
+    "scroll": "Scroll",
+    "dragToRotate": "Drag to rotate",
+    "learnMore": "Learn More",
+    "joinNow": "Join Now",
+    "readWhitepaper": "Read Whitepaper",
+    "buyCyrus": "Buy CYRUS",
+    "mint": "Mint"
+  },
+  "nav": {
+    "philosophy": "Philosophy",
+    "empire": "Empire",
+    "diaspora": "Diaspora",
+    "tokenomics": "Tokenomics",
+    "faq": "FAQ",
+    "leadership": "Leadership"
+  },
+  "hero": {
+    "badge": "Founded by Cyrus Foundation",
+    "title1": "The Spirit of",
+    "title2": "Cyrus Lives On",
+    "description": "A community-first token unifying the global Persian diaspora around the timeless principles of Cyrus the Great—freedom, tolerance, and human dignity. 100% diaspora owned. 50% secured by DAO for long-term public governance. No VC. No pre-sale.",
+    "supply": "Supply",
+    "blockchain": "Blockchain",
+    "diaspora": "Diaspora",
+    "daoSecured": "DAO Secured",
+    "disclaimer": "CYRUS is a community meme token. Not a security. No promise of appreciation. Available exclusively on Coinbase Base."
+  },
+  "philosophy": {
+    "badge": "Our Philosophy",
+    "title": "The Legacy of",
+    "titleHighlight": "Cyrus the Great",
+    "description": "2,500 years ago, Cyrus the Great founded the first empire built on tolerance and human rights. Today, his descendants carry forward that legacy."
+  },
+  "empire": {
+    "badge": "Historical Legacy",
+    "title": "The",
+    "titleHighlight": "Persian Empire",
+    "description": "At its height, the Achaemenid Empire stretched from Egypt to India, united not by conquest but by respect for all peoples."
+  },
+  "diaspora": {
+    "badge": "Global Community",
+    "title": "The Persian",
+    "titleHighlight": "Diaspora",
+    "description": "Today, over 8 million Iranians live outside Iran, forming one of the world's most successful and influential diaspora communities."
+  },
+  "tokenomics": {
+    "badge": "Token Economics",
+    "title": "Fair Launch",
+    "titleHighlight": "Tokenomics",
+    "description": "100% diaspora owned. 50% secured by DAO for long-term public governance. Transparent, community-first distribution.",
+    "totalSupply": "Total Supply",
+    "daoTreasury": "DAO Treasury",
+    "publicSale": "Public Sale",
+    "initialLiquidity": "Initial Liquidity"
+  },
+  "governance": {
+    "badge": "Decentralized Governance",
+    "title": "Community",
+    "titleHighlight": "Governed",
+    "description": "The CYRUS DAO puts decision-making power in the hands of token holders. Every voice matters."
+  },
+  "leadership": {
+    "badge": "Founding Team",
+    "title": "Leadership",
+    "description": "The CYRUS Foundation is led by dedicated individuals committed to the preservation of Persian heritage and the empowerment of the global diaspora. Initial stewardship by the Pahlavi family with planned transition to full public governance.",
+    "foundingChair": "Founding Chair",
+    "boardMember": "Board Member",
+    "creativeOfficer": "Creative Officer",
+    "publicStewardship": "Public Stewardship:",
+    "publicStewardshipText": "The founding board, led by members of the Pahlavi family, will guide CYRUS through its first two years. Additional board members may be selected at board discretion. A planned transition to full public governance will follow, ensuring the community ultimately controls its own destiny."
+  },
+  "faq": {
+    "badge": "Questions & Answers",
+    "title": "Frequently Asked",
+    "titleHighlight": "Questions",
+    "q1": "What is CYRUS?",
+    "a1": "CYRUS is a community token honoring the legacy of Cyrus the Great and uniting the global Persian diaspora. It's built on Base (Ethereum L2) for fast, low-cost transactions.",
+    "q2": "How do I buy CYRUS?",
+    "a2": "You can buy CYRUS using USDT on our bonding curve. Connect your wallet, approve USDT spending, and purchase tokens directly from the contract.",
+    "q3": "What is the DAO?",
+    "a3": "The CYRUS DAO is a decentralized autonomous organization that governs the treasury and makes community decisions. Token holders vote on proposals.",
+    "q4": "When can I transfer my tokens?",
+    "a4": "Transfers are locked until Nowruz 2026 (March 21, 2026) to ensure fair distribution and prevent early dumping.",
+    "q5": "Is this a security?",
+    "a5": "No. CYRUS is a community meme token with no promise of profit or appreciation. It exists for cultural and community purposes."
+  },
+  "footer": {
+    "tagline": "Honoring the legacy of Cyrus the Great",
+    "copyright": "© 2026 CYRUS Foundation. All rights reserved.",
+    "disclaimer": "CYRUS is a community token. Not a security. No investment advice."
+  },
+  "team": {
+    "cyrus": {
+      "bio": "Leading the CYRUS Foundation with a vision of uniting the Persian diaspora and preserving our cultural heritage for future generations."
+    },
+    "kamran": {
+      "bio": "Dedicated to advancing Persian cultural initiatives and supporting the global Iranian community through strategic leadership."
+    },
+    "dara": {
+      "bio": "Bringing creative vision to the CYRUS brand, ensuring our message resonates with Persians worldwide through compelling storytelling and design."
+    }
+  }
+}
