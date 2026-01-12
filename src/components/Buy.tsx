@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import BuyButton from "./BuyButton";
+import SwapWidget from "./SwapWidget";
 
 const Buy = () => {
   const { t } = useTranslation();
@@ -45,14 +46,16 @@ const Buy = () => {
           </p>
         </motion.div>
 
+        {/* Bonding Curve + DEX Trading side by side */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex justify-center"
+          className="flex flex-col lg:flex-row gap-6 justify-center items-start max-w-4xl mx-auto"
         >
           <BuyButton />
+          <SwapWidget />
         </motion.div>
 
         {/* Info cards */}

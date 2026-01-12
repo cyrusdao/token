@@ -230,6 +230,22 @@
     "noLimits": "No Limits",
     "noLimitsDesc": "Buy as much CYRUS as you want—no per-wallet restrictions"
   },
+  "swap": {
+    "dexTrading": "DEX Trading",
+    "comingSoon": "Coming after token launch",
+    "afterLaunch": "Trade CYRUS on Uniswap once the bonding curve completes and liquidity is deployed.",
+    "dexPrice": "Uniswap Price",
+    "bondingPrice": "Bonding Curve",
+    "uniswapPrice": "Uniswap",
+    "bondingCheaper": "Mint {{discount}}% cheaper!",
+    "dexCheaper": "DEX {{discount}}% cheaper!",
+    "mintForDiscount": "Mint on bonding curve for better price",
+    "buyOnDex": "Buy on Uniswap for better price",
+    "tradeOnUniswap": "Trade on Uniswap",
+    "volume24h": "24h Volume",
+    "liquidity": "Liquidity",
+    "noPairs": "No trading pairs yet"
+  },
   "faq": {
     "badge": "Questions & Answers",
     "title": "Frequently Asked",

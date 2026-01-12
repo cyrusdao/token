@@ -230,6 +230,22 @@
     "noLimits": "بدون محدودیت",
     "noLimitsDesc": "هر مقدار سایروس که می‌خواهید بخرید—بدون محدودیت برای هر کیف پول"
   },
+  "swap": {
+    "dexTrading": "معامله در DEX",
+    "comingSoon": "بعد از راه‌اندازی توکن",
+    "afterLaunch": "پس از تکمیل منحنی پیوند و استقرار نقدینگی، سایروس را در Uniswap معامله کنید.",
+    "dexPrice": "قیمت Uniswap",
+    "bondingPrice": "منحنی پیوند",
+    "uniswapPrice": "Uniswap",
+    "bondingCheaper": "{{discount}}٪ ارزان‌تر ضرب کنید!",
+    "dexCheaper": "DEX {{discount}}٪ ارزان‌تر!",
+    "mintForDiscount": "در منحنی پیوند با قیمت بهتر ضرب کنید",
+    "buyOnDex": "در Uniswap با قیمت بهتر بخرید",
+    "tradeOnUniswap": "معامله در Uniswap",
+    "volume24h": "حجم ۲۴ ساعته",
+    "liquidity": "نقدینگی",
+    "noPairs": "هنوز جفت معاملاتی وجود ندارد"
+  },
   "faq": {
     "badge": "پرسش و پاسخ",
     "title": "سوالات",
