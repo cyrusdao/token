@@ -15,24 +15,23 @@ const Hero = () => {
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 geometric-pattern opacity-50" />
 
-      {/* 3D Coin - Full viewport, pinned to opposite side of content */}
+      {/* 3D Coin - Background layer */}
       <div className="absolute inset-0 pointer-events-auto z-0 overflow-visible">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
-          className="absolute inset-0 flex items-center overflow-visible justify-end"
-          style={isRTL ? { transform: 'scaleX(-1)' } : undefined}
+          className={`absolute inset-0 flex items-center overflow-visible ${isRTL ? 'justify-start' : 'justify-end'}`}
         >
-          <div className="w-full h-full translate-x-[25%]">
+          <div className={`w-[70%] h-full ${isRTL ? 'translate-x-[10%]' : '-translate-x-[10%]'}`}>
             <CyrusCoin3D />
           </div>
         </motion.div>
       </div>
 
-      {/* Content - above coin */}
-      <div className="relative z-10 container mx-auto px-6 pt-24 pb-16 pointer-events-none">
-        <div className={`max-w-2xl ${isRTL ? 'text-right ml-auto' : ''}`}>
+      {/* Content - Positioned on opposite side of coin */}
+      <div className={`relative z-10 w-full min-h-screen flex items-center px-6 lg:px-12 pt-24 pb-16 pointer-events-none`}>
+        <div className={`max-w-xl ${isRTL ? 'text-right ml-auto' : 'text-left mr-auto'}`}>
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -118,7 +117,7 @@ const Hero = () => {
           >
             {t("hero.disclaimer")}
           </motion.p>
-        </div>
+          </div>
       </div>
 
       {/* Scroll Indicator */}

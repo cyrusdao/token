@@ -34,31 +34,36 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-background border-t border-border/50">
+    <footer className="bg-gradient-to-b from-background to-amber-950/10 border-t border-amber-500/20">
       <div className="container mx-auto px-6 py-20">
         {/* Main footer content */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-12 mb-16">
           {/* Brand */}
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <span className="font-display text-lg tracking-[0.2em] text-foreground">
-                CYRUS
-              </span>
-              <span className="text-gradient-gold font-display text-lg tracking-[0.2em]">
-                .CASH
-              </span>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-background font-display font-bold text-xl">
+                C
+              </div>
+              <div className="flex items-center">
+                <span className="font-display text-lg tracking-[0.2em] text-foreground">
+                  CYRUS
+                </span>
+                <span className="text-gradient-gold font-display text-lg tracking-[0.2em]">
+                  .CASH
+                </span>
+              </div>
             </div>
             <p className="text-muted-foreground font-sans text-sm leading-relaxed max-w-xs mb-4">
               {t("footer.brand")}
             </p>
-            <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-muted-foreground/60">
+            <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-amber-400/60">
               {t("footer.distribution")}
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-6">
+            <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-amber-400 mb-6">
               {t("footer.project")}
             </h4>
             <ul className="space-y-3">
@@ -66,7 +71,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors font-sans text-sm"
+                    className="text-muted-foreground hover:text-amber-400 transition-colors font-sans text-sm"
                   >
                     {link.name}
                   </a>
@@ -76,7 +81,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-6">
+            <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-amber-400 mb-6">
               {t("footer.resources")}
             </h4>
             <ul className="space-y-3">
@@ -84,7 +89,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors font-sans text-sm"
+                    className="text-muted-foreground hover:text-amber-400 transition-colors font-sans text-sm"
                   >
                     {link.name}
                   </a>
@@ -94,7 +99,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-6">
+            <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-amber-400 mb-6">
               {t("footer.ecosystem")}
             </h4>
             <ul className="space-y-3">
@@ -104,7 +109,7 @@ const Footer = () => {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className="text-muted-foreground hover:text-foreground transition-colors font-sans text-sm"
+                    className="text-muted-foreground hover:text-amber-400 transition-colors font-sans text-sm"
                   >
                     {link.name}
                   </a>
@@ -114,7 +119,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-6">
+            <h4 className="font-mono text-[10px] tracking-[0.15em] uppercase text-amber-400 mb-6">
               {t("footer.social")}
             </h4>
             <ul className="space-y-3">
@@ -124,7 +129,7 @@ const Footer = () => {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className="text-muted-foreground hover:text-foreground transition-colors font-sans text-sm"
+                    className="text-muted-foreground hover:text-amber-400 transition-colors font-sans text-sm"
                   >
                     {link.name}
                   </a>
@@ -134,25 +139,25 @@ const Footer = () => {
           </div>
         </div>
 
-        <Separator className="bg-border/50" />
+        <Separator className="bg-amber-500/20" />
 
         {/* Disclaimer */}
         <div className="py-8">
           <p className="text-muted-foreground/60 font-sans text-xs leading-relaxed max-w-4xl">
-            <strong className="text-muted-foreground">Disclaimer:</strong> {t("footer.disclaimer")}
+            <strong className="text-amber-400/80">Disclaimer:</strong> {t("footer.disclaimer")}
           </p>
         </div>
 
-        <Separator className="bg-border/50" />
+        <Separator className="bg-amber-500/20" />
 
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8">
           <div className="flex items-center gap-6 text-muted-foreground/60 font-sans text-xs">
             <span>{t("footer.copyright")}</span>
-            <a href="/privacy" className="hover:text-foreground transition-colors">{t("footer.privacyPolicy")}</a>
-            <a href="/terms" className="hover:text-foreground transition-colors">{t("footer.termsOfService")}</a>
+            <a href="/privacy" className="hover:text-amber-400 transition-colors">{t("footer.privacyPolicy")}</a>
+            <a href="/terms" className="hover:text-amber-400 transition-colors">{t("footer.termsOfService")}</a>
           </div>
-          <p className="font-sans text-muted-foreground/60 text-xs">
+          <p className="font-display text-amber-400/60 text-xs tracking-wider">
             {t("footer.keepPersiaGreat")}
           </p>
         </div>
