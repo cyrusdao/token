@@ -15,13 +15,14 @@ const Hero = () => {
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 geometric-pattern opacity-50" />
 
-      {/* 3D Coin - Full viewport, pinned to right side */}
+      {/* 3D Coin - Full viewport, pinned to opposite side of content */}
       <div className="absolute inset-0 pointer-events-auto z-0 overflow-visible">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
-          className="absolute inset-0 flex items-center justify-end overflow-visible"
+          className="absolute inset-0 flex items-center overflow-visible justify-end"
+          style={isRTL ? { transform: 'scaleX(-1)' } : undefined}
         >
           <div className="w-full h-full translate-x-[25%]">
             <CyrusCoin3D />
@@ -31,13 +32,13 @@ const Hero = () => {
 
       {/* Content - above coin */}
       <div className="relative z-10 container mx-auto px-6 pt-24 pb-16 pointer-events-none">
-        <div className="max-w-2xl">
+        <div className={`max-w-2xl ${isRTL ? 'text-right ml-auto' : ''}`}>
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6"
+            className={`mb-6 ${isRTL ? 'flex justify-end' : ''}`}
           >
             <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase text-muted-foreground glass glass-border px-4 py-2 rounded-full pointer-events-auto">
               <span className="w-1.5 h-1.5 rounded-full bg-pahlavi-emerald animate-pulse" />
@@ -72,7 +73,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap gap-6 mb-10"
+            className={`flex flex-wrap gap-6 mb-10 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}
           >
             {[
               { value: "1B", label: t("hero.supply") },
@@ -80,7 +81,7 @@ const Hero = () => {
               { value: "100%", label: t("hero.diaspora") },
               { value: "50%", label: t("hero.daoSecured") },
             ].map((stat) => (
-              <div key={stat.label} className="text-left">
+              <div key={stat.label} className={isRTL ? 'text-right' : 'text-left'}>
                 <div className="font-display text-2xl md:text-3xl text-foreground tracking-wide drop-shadow-md">
                   {stat.value}
                 </div>
@@ -96,7 +97,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4 pointer-events-auto"
+            className={`flex flex-col sm:flex-row gap-4 pointer-events-auto ${isRTL ? 'sm:flex-row-reverse sm:justify-end' : ''}`}
           >
             <Button variant="hero" size="lg" onClick={() => document.getElementById('buy')?.scrollIntoView({ behavior: 'smooth' })}>
               <Coins className="w-5 h-5" />
@@ -113,7 +114,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="mt-6 text-[11px] text-muted-foreground/60 max-w-md"
+            className={`mt-6 text-[11px] text-muted-foreground/60 max-w-md ${isRTL ? 'mr-0 ml-auto' : ''}`}
           >
             {t("hero.disclaimer")}
           </motion.p>

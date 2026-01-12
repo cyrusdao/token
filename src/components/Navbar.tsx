@@ -72,10 +72,10 @@ const Navbar = () => {
                 />
               </motion.div>
             </div>
-            {/* CYRUS → $CASH hover animation */}
+            {/* CYRUS → CASH hover animation */}
             <span className="font-display text-xl font-bold tracking-[0.15em] text-foreground relative h-7 overflow-hidden">
               <span className="block transition-transform duration-300 group-hover:-translate-y-full">CYRUS</span>
-              <span className="block text-pahlavi-gold transition-transform duration-300 group-hover:-translate-y-full">$CASH</span>
+              <span className="block text-pahlavi-gold transition-transform duration-300 group-hover:-translate-y-full">CASH</span>
             </span>
           </a>
 
