@@ -15,23 +15,23 @@ const Hero = () => {
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 geometric-pattern opacity-50" />
 
-      {/* 3D Coin - Background layer */}
+      {/* 3D Coin - Background layer - always on flex-end (right in LTR, left in RTL) */}
       <div className="absolute inset-0 pointer-events-auto z-0 overflow-visible">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
-          className={`absolute inset-0 flex items-center overflow-visible ${isRTL ? 'justify-start' : 'justify-end'}`}
+          className="absolute inset-0 flex items-center justify-end overflow-visible"
         >
-          <div className={`w-[70%] h-full ${isRTL ? 'translate-x-[10%]' : '-translate-x-[10%]'}`}>
+          <div className="w-[55%] h-full translate-x-[35%]">
             <CyrusCoin3D />
           </div>
         </motion.div>
       </div>
 
-      {/* Content - Positioned on opposite side of coin */}
-      <div className={`relative z-10 w-full min-h-screen flex items-center px-6 lg:px-12 pt-24 pb-16 pointer-events-none`}>
-        <div className={`max-w-xl ${isRTL ? 'text-right ml-auto' : 'text-left mr-auto'}`}>
+      {/* Content - always on flex-start (left in LTR, right in RTL) */}
+      <div className={`relative z-10 w-full min-h-screen flex items-center justify-start pt-24 pb-16 pointer-events-none ${isRTL ? 'pr-6 lg:pr-12' : 'pl-6 lg:pl-12'}`}>
+        <div className={`max-w-lg ${isRTL ? 'text-right' : 'text-left'}`}>
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

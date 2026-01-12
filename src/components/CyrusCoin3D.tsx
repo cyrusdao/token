@@ -210,7 +210,7 @@ const Coin = ({ rotation, showRings = true, flatView = false }: CoinProps) => {
           </mesh>
 
           {/* Back face - Lion - flush to edge */}
-          <mesh position={[0, -coinThickness / 2 - 0.001, 0]} rotation={[Math.PI / 2, 0, Math.PI]}>
+          <mesh position={[0, -coinThickness / 2 - 0.001, 0]} rotation={[Math.PI / 2, 0, 0]}>
             <circleGeometry args={[coinRadius, 64]} />
             <meshStandardMaterial
               map={backTexture}
