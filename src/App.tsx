@@ -6,6 +6,9 @@ import { WagmiProvider } from "@/components/WagmiProvider";
 import Index from "./pages/Index";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import Pars from "./pages/Pars";
+import Dao from "./pages/Dao";
+import CyrusToken from "./pages/Cyrus";
 import NotFound from "./pages/NotFound";
 
 // Use base path from Vite config for GitHub Pages
@@ -19,6 +22,9 @@ const App = () => (
       <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/pars" element={<Pars />} />
+          <Route path="/dao" element={<Dao />} />
+          <Route path="/cyrus" element={<CyrusToken />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
