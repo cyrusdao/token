@@ -30,10 +30,8 @@
     <meta name="twitter:title" content="Cyrus.Cash - The Father of Human Rights Token" />
     <meta name="twitter:description" content="CYRUS token honors Cyrus the Great. Quadratic bonding curve from $0.01 to $1.00." />
     <meta name="twitter:image" content="https://cyrus.cash/og-image.png" />
-  </head>
 
-  <body>
-    <!-- SPA redirect handler for GitHub Pages -->
+    <!-- SPA redirect handler for GitHub Pages - must be in head to run before React -->
     <script>
       (function(l) {
         if (l.search[1] === '/' ) {
@@ -46,6 +44,9 @@
         }
       }(window.location))
     </script>
+  </head>
+
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
