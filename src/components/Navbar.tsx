@@ -24,6 +24,7 @@ const Navbar = () => {
     { name: t("nav.empire"), href: "#empire" },
     { name: t("nav.diaspora"), href: "#diaspora" },
     { name: t("nav.tokenomics"), href: "#tokenomics" },
+    { name: t("nav.governance"), href: "https://cyrus.vote", external: true },
     { name: t("nav.faq"), href: "#faq" },
   ];
 
@@ -85,6 +86,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="font-sans text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 {link.name}
@@ -125,6 +127,7 @@ const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
+                    {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="block py-3 font-sans text-muted-foreground hover:text-foreground transition-colors duration-300 text-base"
                   >
                     {link.name}
