@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Coins } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 import cyrusCoinFace from "@/assets/cyrus-coin-face.png";
 import freedomLion from "@/assets/freedom-lion.png";
-import coinEdgeTexture from "@/assets/coin-edge.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +22,6 @@ const Navbar = () => {
     { name: t("nav.empire"), href: "#empire" },
     { name: t("nav.diaspora"), href: "#diaspora" },
     { name: t("nav.tokenomics"), href: "#tokenomics" },
-    { name: t("nav.governance"), href: "https://cyrus.vote", external: true },
     { name: t("nav.faq"), href: "#faq" },
   ];
 
@@ -32,7 +29,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "glass glass-border bg-background/80"
+          ? "glass glass-border bg-background/90 backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
@@ -62,7 +59,7 @@ const Navbar = () => {
                   className="absolute inset-0 w-full h-full rounded-full object-cover"
                   style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg) translateZ(2px)' }}
                 />
-                {/* Gold edge - simple solid color for cleaner look */}
+                {/* Gold edge */}
                 <div
                   className="absolute inset-0 rounded-full"
                   style={{
@@ -73,10 +70,9 @@ const Navbar = () => {
                 />
               </motion.div>
             </div>
-            {/* CYRUS → CRYPTO hover animation */}
-            <span className="font-display text-xl font-bold tracking-[0.15em] text-foreground relative h-7 overflow-hidden">
-              <span className="block transition-transform duration-300 group-hover:-translate-y-full">CYRUS</span>
-              <span className="block text-pahlavi-gold transition-transform duration-300 group-hover:-translate-y-full">CRYPTO</span>
+            {/* CYRUS text logo */}
+            <span className="font-display text-xl font-bold tracking-[0.15em] text-foreground">
+              CYRUS
             </span>
           </a>
 
@@ -86,7 +82,6 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="font-sans text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 {link.name}
@@ -97,10 +92,14 @@ const Navbar = () => {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <LanguageSwitcher />
-            <Button variant="gold" size="sm" className="font-sans font-bold">
-              <Coins className="w-4 h-4" />
-              {t("common.mint")}
-            </Button>
+            <a
+              href="https://pars.vote"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2 border-2 border-pahlavi-gold text-pahlavi-gold font-semibold rounded-lg hover:bg-pahlavi-gold hover:text-background transition-all text-sm"
+            >
+              Join DAO
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -127,7 +126,6 @@ const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="block py-3 font-sans text-muted-foreground hover:text-foreground transition-colors duration-300 text-base"
                   >
                     {link.name}
@@ -137,10 +135,15 @@ const Navbar = () => {
                   <div className="flex justify-center pb-2">
                     <LanguageSwitcher />
                   </div>
-                  <Button variant="gold" className="w-full font-sans font-bold">
-                    <Coins className="w-4 h-4" />
-                    {t("common.mint")}
-                  </Button>
+                  <a
+                    href="https://pars.vote"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 border-2 border-pahlavi-gold text-pahlavi-gold font-semibold rounded-lg hover:bg-pahlavi-gold hover:text-background transition-all text-center"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Join DAO
+                  </a>
                 </div>
               </div>
             </motion.div>
