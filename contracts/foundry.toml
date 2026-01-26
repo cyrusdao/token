@@ -1,0 +1,32 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc = "0.8.31"
+optimizer = true
+optimizer_runs = 200
+
+# Remappings - single source of truth
+remappings = [
+    "@luxfi/standard/=lib/lux-standard/contracts/",
+    "forge-std/=lib/forge-std/src/",
+    # Internal remappings for @luxfi/standard dependencies (not for consumers)
+    "@openzeppelin/contracts/=lib/lux-standard/lib/openzeppelin-contracts/contracts/",
+    "@openzeppelin/contracts-upgradeable/=lib/lux-standard/lib/openzeppelin-contracts-upgradeable/contracts/",
+    "@safe-global/safe-smart-account/=lib/lux-standard/lib/safe-smart-account/contracts/",
+]
+
+# Base network configs
+[rpc_endpoints]
+base = "${BASE_RPC_URL}"
+base_sepolia = "${BASE_SEPOLIA_RPC_URL}"
+
+[etherscan]
+base = { key = "${BASESCAN_API_KEY}", url = "https://api.basescan.org/api" }
+base_sepolia = { key = "${BASESCAN_API_KEY}", url = "https://api-sepolia.basescan.org/api" }
+
+[profile.default.fuzz]
+runs = 256
+
+[profile.ci.fuzz]
+runs = 10000

@@ -123,7 +123,7 @@ const Philosophy = () => {
               size="lg"
               className="bg-pahlavi-gold hover:bg-pahlavi-gold/90 text-background font-display tracking-wider mt-2"
             >
-              <a href="https://cyrus.cash/mint">
+              <a href="/mint">
                 <Coins className="mr-2 h-5 w-5" />
                 {t("common.joinMovement")}
               </a>

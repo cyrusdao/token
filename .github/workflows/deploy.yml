@@ -1,8 +1,11 @@
-name: Deploy to GitHub Pages
+name: Deploy CYRUS Token to GitHub Pages (cyrus.money)
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'cash/**'
+      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 permissions:
@@ -11,7 +14,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: token-pages
   cancel-in-progress: false
 
 jobs:
@@ -24,12 +27,23 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: cash/package-lock.json
 
       - name: Install dependencies
-        run: rm -rf node_modules package-lock.json && npm install
+        run: |
+          cd cash
+          rm -rf node_modules package-lock.json && npm install
 
       - name: Build
-        run: npm run build
+        env:
+          CUSTOM_DOMAIN: true
+        run: |
+          cd cash
+          npm run build
+
+      - name: Add CNAME for cyrus.money
+        run: |
+          echo "cyrus.money" > ./cash/dist/CNAME
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -37,7 +51,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: cash/dist
 
   deploy:
     environment:

@@ -27,7 +27,7 @@ const Terms = () => {
               <section className="space-y-4">
                 <h2 className="font-display text-2xl text-foreground tracking-wide">1. Acceptance of Terms</h2>
                 <p>
-                  By accessing and using cyrus.cash and participating in the CYRUS token ecosystem, 
+                  By accessing and using cyrus.money and participating in the CYRUS token ecosystem, 
                   you agree to be bound by these Terms of Service. If you do not agree to these terms, 
                   please do not use our services.
                 </p>

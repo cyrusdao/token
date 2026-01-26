@@ -22,9 +22,9 @@ const Footer = () => {
       { name: t("footer.brandAssets"), href: "#" },
     ],
     ecosystem: [
-      { name: "cyrus.ngo", href: "https://cyrus.ngo", external: true },
-      { name: "cyrus.vote", href: "https://cyrus.vote", external: true },
-      { name: "Base Blockchain", href: "https://base.org", external: true },
+      { name: "pars.vote", href: "https://pars.vote", external: true },
+      { name: "miga.us.org", href: "https://miga.us.org", external: true },
+      { name: "pars.network", href: "https://pars.network", external: true },
     ],
     social: [
       { name: "Twitter / X", href: "#", external: true },
@@ -49,7 +49,7 @@ const Footer = () => {
                   CYRUS
                 </span>
                 <span className="text-gradient-gold font-display text-lg tracking-[0.2em]">
-                  .CASH
+                  .MONEY
                 </span>
               </div>
             </div>

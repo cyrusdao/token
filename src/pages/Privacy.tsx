@@ -29,7 +29,7 @@ const Privacy = () => {
                 <p>
                   The Cyrus Foundation ("we," "our," or "us") respects your privacy and is committed 
                   to protecting your personal information. This Privacy Policy explains how we collect, 
-                  use, and safeguard information when you visit cyrus.cash.
+                  use, and safeguard information when you visit cyrus.money.
                 </p>
               </section>
 

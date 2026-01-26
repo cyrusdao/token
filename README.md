@@ -1,20 +1,16 @@
-# Cyrus.Money
+# CYRUS Token
 
-**Redirect to MIGA Protocol**
+**cyrus.money** - The official CYRUS token website
 
-This site (cyrus.money) now redirects to [migaprotocol.xyz](https://migaprotocol.xyz).
+[![Live](https://img.shields.io/badge/Live-cyrus.money-gold)](https://cyrus.money)
 
-## About
+## Overview
 
-The CYRUS token is part of the unified Persian DAO governance system. For token purchases and governance:
-
-- **Get MIGA**: [migaprotocol.xyz](https://migaprotocol.xyz)
-- **Governance**: [pars.vote](https://pars.vote)
-- **Foundation**: [miga.us.org](https://miga.us.org)
+CYRUS is a governance token honoring Cyrus the Great, founder of the Achaemenid Empire and author of the first declaration of human rights (The Cyrus Cylinder, 539 BCE).
 
 ## Multi-Token Governance
 
-All three Persian DAO tokens provide equal governance power:
+CYRUS is part of the unified Persian DAO governance system:
 
 | Token | Power |
 |-------|-------|
@@ -22,9 +18,7 @@ All three Persian DAO tokens provide equal governance power:
 | MIGA | 1 Token = 1 Vote |
 | PARS | 1 Token = 1 Vote |
 
-## Note
-
-**cyrus.cash** (different domain) is reserved for the upcoming CYRUS stablecoin.
+**Vote at [pars.vote](https://pars.vote)** - Stake any token for equal governance power.
 
 ## Development
 
@@ -34,8 +28,23 @@ pnpm dev
 pnpm build
 ```
 
+## Tech Stack
+
+- React 18 + TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- i18n (English + Farsi)
+
 ## Links
 
-- [migaprotocol.xyz](https://migaprotocol.xyz) - Token launch
-- [pars.vote](https://pars.vote) - Governance
+- **Token Site**: [cyrus.money](https://cyrus.money)
+- **Governance**: [pars.vote](https://pars.vote)
+- **MIGA Protocol**: [migaprotocol.xyz](https://migaprotocol.xyz)
+- **Pars Network**: [pars.network](https://pars.network)
+
+## Related
+
 - [github.com/cyrusdao](https://github.com/cyrusdao) - Cyrus DAO
+- [github.com/migaprotocol](https://github.com/migaprotocol) - MIGA Protocol
+- [github.com/parsdao](https://github.com/parsdao) - Pars DAO
