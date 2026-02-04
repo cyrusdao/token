@@ -31,16 +31,16 @@ const ParallaxRings = ({ rotation }: { rotation: [number, number, number] }) => 
     edgeTexture.needsUpdate = true;
   }, [edgeTexture, gl]);
 
-  // Fibonacci-inspired spacing: gaps increase as 0.13, 0.21, 0.34
-  // Coin radius is ~1.92, so first ring starts at 2.05
+  // Fibonacci-inspired spacing: gaps increase as 0.16, 0.26, 0.42
+  // Coin radius is ~2.4, so first ring starts at 2.56
   // Very thin rings (0.03 width) with increasing gaps
-  const ringThickness = 0.04; // tube radius for torus
+  const ringThickness = 0.05; // tube radius for torus - slightly thicker
   const ringWidth = 0.03; // unused now but kept for reference
-  
+
   const rings = useMemo(() => [
-    { innerR: 2.05, outerR: 2.05 + ringWidth, repeat: 14 },   // gap 0.13 from coin
-    { innerR: 2.29, outerR: 2.29 + ringWidth, repeat: 16 },   // gap 0.21 from inner
-    { innerR: 2.66, outerR: 2.66 + ringWidth, repeat: 18 },   // gap 0.34 from middle
+    { innerR: 2.56, outerR: 2.56 + ringWidth, repeat: 16 },   // gap 0.16 from coin
+    { innerR: 2.85, outerR: 2.85 + ringWidth, repeat: 18 },   // gap 0.26 from inner
+    { innerR: 3.30, outerR: 3.30 + ringWidth, repeat: 20 },   // gap 0.42 from middle
   ], []);
 
   // Parallax rotation - rings follow coin's X-axis rotation at different speeds
@@ -177,8 +177,8 @@ const Coin = ({ rotation, showRings = true, flatView = false }: CoinProps) => {
     }
   });
 
-  const coinRadius = 1.92;
-  const coinThickness = 0.25;
+  const coinRadius = 2.4;  // Increased from 1.92
+  const coinThickness = 0.3;  // Slightly thicker too
 
   return (
     <>
@@ -296,9 +296,9 @@ const CyrusCoin3D = ({ showRings = true, size = "lg" }: CyrusCoin3DProps) => {
   };
 
   const sizeConfig = {
-    sm: { classes: "w-10 h-10 rounded-full overflow-hidden", camera: 7.2, fov: 32 },
-    md: { classes: "w-24 h-24 rounded-full overflow-hidden", camera: 6, fov: 34 },
-    lg: { classes: "w-full h-full min-h-[600px]", camera: 9.5, fov: 48 }
+    sm: { classes: "w-10 h-10 rounded-full overflow-hidden", camera: 8.5, fov: 32 },
+    md: { classes: "w-24 h-24 rounded-full overflow-hidden", camera: 7, fov: 34 },
+    lg: { classes: "w-full h-full min-h-[600px]", camera: 11, fov: 48 }  // Camera pulled back for bigger coin
   };
 
   const config = sizeConfig[size];
