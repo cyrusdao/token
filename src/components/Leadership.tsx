@@ -17,9 +17,25 @@ const teamMembers: TeamMember[] = [
     id: "cyrus",
     image: "/assets/images/cyrus-pahlavi.png",
     links: {
-      website: "https://www.cyruspahlavi.com/about",
+      website: "https://www.cyruspahlavi.com",
       instagram: "https://www.instagram.com/cyruspahlavi",
       linkedin: "https://www.linkedin.com/in/cyruspahlavi",
+    },
+  },
+  {
+    id: "kamran",
+    image: "/assets/images/kamran-pahlavi.png",
+    links: {
+      instagram: "https://www.instagram.com/kamranpahlavi",
+    },
+  },
+  {
+    id: "dara",
+    image: "/assets/images/dara-gallopin.png",
+    links: {
+      website: "https://www.daragallopin.com",
+      instagram: "https://www.instagram.com/daragallopin",
+      linkedin: "https://www.linkedin.com/in/daragallopin",
     },
   },
 ];

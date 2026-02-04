@@ -51,10 +51,17 @@
     "blockchainP2": "Governance designed to be open, verifiable, and accountable. Submit proposals. Debate publicly. Vote on budgets. Track outcomes onchain. No single authority controls this—the community does.",
     "missionTitle": "Our",
     "missionHighlight": "Mission",
-    "missionP1": "The Cyrus Coin was created as a symbol of urgency, unity, and national revival.",
+    "missionP1": "The Cyrus the Great Coin was created as a symbol of urgency, unity, and national revival.",
     "missionP2": "Rooted in the legacy of Cyrus the Great, its mission is to support the Iranian people in their struggle for freedom after decades of oppression. It seeks to empower the revolution, aid a transition toward Reza Pahlavi and a stable interim government, and lay the foundations for a democratic, prosperous Iran.",
     "missionP3": "Beyond the fight, it embodies a long-term commitment to rebuilding a strong and proud nation.",
-    "foundedBy": "Founded by Cyrus Pahlavi and the Cyrus Foundation (cyrus.ngo)"
+    "foundedBy": "Founded by Cyrus Pahlavi and the Cyrus Foundation (cyrus.ngo)",
+    "empoweringTitle": "Empowering the People",
+    "empoweringDesc": "Funding projects in education, entrepreneurship, and opportunity—putting people first. Creating pathways for the next generation to thrive.",
+    "revivingTitle": "Reviving Culture",
+    "revivingDesc": "Financing a landmark television series, Cyrus the Great, bringing Persian heritage to global audiences. Preserving and celebrating 2,500 years of civilization.",
+    "prosperityTitle": "Building Prosperity",
+    "prosperityDesc": "Creating a cycle where profits flow back to the people through the DAO treasury. Community-controlled funds for humanitarian and cultural initiatives.",
+    "tagline": "Cyrus the Great Coin: The people's voice on the blockchain"
   },
   "empire": {
     "badge": "Historical Legacy",
