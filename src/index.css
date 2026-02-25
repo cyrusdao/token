@@ -1,0 +1,148 @@
+/* Fonts loaded via index.html for Geist and Cinzel */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 43 74% 49%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 6%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 0 0% 8%;
+    --accent-foreground: 43 74% 49%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 12%;
+    --input: 0 0% 10%;
+    --ring: 43 74% 49%;
+    --radius: 0.75rem;
+    
+    /* Pahlavi colors - refined */
+    --pahlavi-gold: 43 74% 49%;
+    --pahlavi-gold-light: 45 80% 60%;
+    --pahlavi-gold-dark: 40 70% 35%;
+    --pahlavi-crimson: 0 65% 45%;
+    --pahlavi-crimson-light: 0 70% 55%;
+    --pahlavi-emerald: 158 64% 40%;
+    --pahlavi-emerald-light: 158 65% 50%;
+    --pahlavi-royal: 220 40% 8%;
+    --pahlavi-royal-light: 220 35% 18%;
+    --pahlavi-cream: 45 30% 96%;
+    --pahlavi-sand: 35 20% 85%;
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 43 74% 49%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 43 74% 49%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { 
+    @apply bg-background text-foreground font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html { scroll-behavior: smooth; }
+}
+
+@layer utilities {
+  /* Apple-inspired gradients */
+  .bg-gradient-hero {
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(43 74% 49% / 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 2%) 100%);
+  }
+  
+  .bg-gradient-section {
+    background: radial-gradient(ellipse 100% 100% at 50% 0%, hsl(43 74% 49% / 0.03) 0%, transparent 50%);
+  }
+  
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(43 74% 49%) 0%, hsl(45 80% 60%) 50%, hsl(40 70% 45%) 100%);
+  }
+  
+  .bg-gradient-card {
+    background: linear-gradient(145deg, hsl(0 0% 5%) 0%, hsl(0 0% 3%) 100%);
+  }
+  
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(43 74% 55%) 0%, hsl(45 80% 65%) 40%, hsl(40 70% 50%) 100%);
+  }
+  
+  /* Apple-inspired glass effect */
+  .glass {
+    background: hsl(0 0% 100% / 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .glass-border {
+    border: 1px solid hsl(0 0% 100% / 0.08);
+  }
+  
+  /* Shadows */
+  .shadow-gold { 
+    box-shadow: 0 0 80px hsl(43 74% 49% / 0.12), 
+                0 0 40px hsl(43 74% 49% / 0.08); 
+  }
+  
+  .shadow-gold-intense { 
+    box-shadow: 0 0 120px hsl(43 74% 49% / 0.2), 
+                0 0 60px hsl(43 74% 49% / 0.12), 
+                0 25px 80px hsl(0 0% 0% / 0.6); 
+  }
+  
+  .shadow-apple {
+    box-shadow: 0 2px 4px hsl(0 0% 0% / 0.1),
+                0 12px 28px hsl(0 0% 0% / 0.2),
+                0 20px 40px hsl(0 0% 0% / 0.15);
+  }
+  
+  /* Subtle pattern */
+  .geometric-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.3' stroke-opacity='0.02'%3E%3Cpath d='M30 0L30 60M0 30L60 30'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, hsl(43 74% 49% / 0.3) 20%, hsl(43 74% 49% / 0.5) 50%, hsl(43 74% 49% / 0.3) 80%, transparent 100%);
+  }
+  
+  /* Apple-inspired text styles */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Refined scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { 
+  background: hsl(0 0% 30%); 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { 
+  background: hsl(0 0% 40%); 
+}
+
+::selection { 
+  background: hsl(43 74% 49% / 0.25); 
+  color: hsl(0 0% 100%); 
+}

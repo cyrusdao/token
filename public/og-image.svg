@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="50%" style="stop-color:#FFA500"/>
+      <stop offset="100%" style="stop-color:#B8860B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="260" r="120" fill="none" stroke="url(#gold)" stroke-width="6"/>
+  <text x="600" y="305" font-family="Georgia, serif" font-size="140" font-weight="bold" fill="url(#gold)" text-anchor="middle">C</text>
+  <text x="600" y="450" font-family="system-ui, sans-serif" font-size="72" font-weight="bold" fill="#ffffff" text-anchor="middle">CYRUS.CASH</text>
+  <text x="600" y="520" font-family="system-ui, sans-serif" font-size="32" fill="#888888" text-anchor="middle">The Father of Human Rights Token</text>
+  <text x="600" y="580" font-family="system-ui, sans-serif" font-size="24" fill="#FFD700" text-anchor="middle">$0.01 → $1.00 | 100X Bonding Curve on Base</text>
+</svg>
