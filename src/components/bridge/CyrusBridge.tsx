@@ -1,6 +1,6 @@
 // Cyrus DAO - Multi-chain Presale Widget
-// 7 chains: Bitcoin, Ethereum, BNB, Solana, XRP, TON, Lux
-// Funds go directly to DAO treasury — CYRUS claimable at mint date
+// 8 chains: Bitcoin, Ethereum, BNB, Solana, XRP, TON, Lux, Zoo
+// Funds go directly to DAO treasury — CYRUS claimable at Nowruz (March 20)
 
 import { useState, useMemo } from 'react';
 import { ArrowRight, Copy, Check, ExternalLink, Shield, ChevronDown, Wallet, QrCode, Info } from 'lucide-react';
@@ -215,7 +215,7 @@ export function CyrusBridge({ className = '', compact = false, defaultChain = 'S
           <Info size={16} className="text-amber-400 mt-0.5 flex-shrink-0" />
           <div className="text-xs text-amber-200/80">
             <p className="mb-1">Send <span className="font-medium text-amber-300">{asset?.symbol || chain?.symbol}</span> on <span className="font-medium text-amber-300">{chain?.name}</span> to this address.</p>
-            <p className="text-amber-300/50">Funds go directly to the DAO treasury. CYRUS tokens are claimable on Pars Network after the mint date.</p>
+            <p className="text-amber-300/50">Funds go directly to the DAO treasury. CYRUS tokens are claimable on Pars Network after Nowruz (March 20, 2026).</p>
           </div>
         </div>
 

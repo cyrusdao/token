@@ -32,7 +32,7 @@ const Buy = () => {
             {t("buy.title")} <span className="text-gradient-gold">{t("buy.titleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-            Send from any of 7 chains. Funds go directly to the DAO treasury. CYRUS tokens claimable on Pars Network after the mint date.
+            Send from any of 8 chains. Funds go directly to the DAO treasury. CYRUS tokens claimable on Pars Network after Nowruz (March 20).
           </p>
 
           {/* Total raised stats */}
@@ -152,7 +152,7 @@ const Buy = () => {
           {[
             { icon: TrendingUp, title: "1. Select Chain", desc: "Choose from 7 supported blockchains. Each chain has its own bonding curve from $0.01 to $1.00." },
             { icon: Shield, title: "2. Send Funds", desc: "Send to the DAO treasury address shown. Funds are secured by 3-of-5 multi-sig." },
-            { icon: Sparkles, title: "3. Claim CYRUS", desc: "Claim your CYRUS tokens on Pars Network after the mint date. Your wallet = your proof." },
+            { icon: Sparkles, title: "3. Claim CYRUS", desc: "Claim your CYRUS tokens on Pars Network after Nowruz (March 20, 2026). Your wallet = your proof." },
           ].map((item) => (
             <div key={item.title} className="p-6 rounded-xl bg-amber-950/30 border border-amber-500/20 backdrop-blur-sm">
               <item.icon className="text-amber-400 mb-3" size={22} />

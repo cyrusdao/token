@@ -1,12 +1,12 @@
 // Cyrus DAO - Supported Networks for Presale
-// 7 native chains: BTC, ETH, SOL, BNB, XRP, TON, LUX
-// CYRUS claimable on Pars Network after mint date
+// 8 native chains: BTC, ETH, SOL, BNB, XRP, TON, LUX, ZOO
+// CYRUS claimable on Pars Network after mint date (Nowruz, March 20)
 
 import type { ChainConfig, DAOWalletConfig, DonationAsset } from './types';
 
 const DEPOSIT_ADDRESSES = {
   BITCOIN: 'bc1qem8jywyuc9wtgf7y5n9tyq6tknpj3l85tzg9y6',
-  EVM:     '0xAaf3a7253c73a58f2713f454717C5338c6573d62', // ETH, Base, Optimism, Arbitrum, BSC
+  EVM:     '0xAaf3a7253c73a58f2713f454717C5338c6573d62', // ETH, Base, Optimism, Arbitrum, BSC, Zoo
   SOLANA:  'BPTZhkTdRwqnrb7PnWvi6SkCWQHcvUZrfaYvPkZ2YD8R',
   XRP:     'raBQUYdAhnnojJQ6Xi3eXztZ74ot24RDq1',
   XRP_MEMO:'3943970694',
@@ -31,6 +31,7 @@ export const CYRUS_DAO_WALLET: DAOWalletConfig = {
     XRP:      DEPOSIT_ADDRESSES.XRP,
     TON:      DEPOSIT_ADDRESSES.TON,
     LUX:      DEPOSIT_ADDRESSES.LUX,
+    ZOO:      DEPOSIT_ADDRESSES.EVM,
   }
 };
 
@@ -94,6 +95,12 @@ export const CYRUS_CHAINS: ChainConfig[] = [
     rpc: 'https://api.lux.network', nativeAsset: 'LUX', decimals: 18, enabled: true,
     depositAddress: DEPOSIT_ADDRESSES.LUX,
   },
+  {
+    id: 'ZOO', name: 'Zoo Network', symbol: 'ZOO', chainId: 200200, type: 'evm',
+    color: '#10B981', icon: '/images/tokens/zoo.png', explorer: 'https://explore.zoo.id',
+    rpc: 'https://rpc.zoo.id', nativeAsset: 'ZOO', decimals: 18, enabled: true,
+    depositAddress: DEPOSIT_ADDRESSES.EVM,
+  },
 ];
 
 export const MINT_ASSETS: Record<string, DonationAsset[]> = {
@@ -132,6 +139,9 @@ export const MINT_ASSETS: Record<string, DonationAsset[]> = {
   ],
   LUX: [
     { symbol: 'LUX', name: 'Lux', decimals: 18, logo: '/images/tokens/lux.png', enabled: true },
+  ],
+  ZOO: [
+    { symbol: 'ZOO', name: 'Zoo', decimals: 18, logo: '/images/tokens/zoo.png', enabled: true },
   ],
 };
 

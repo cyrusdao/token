@@ -1,24 +1,25 @@
 // Cyrus DAO Bonding Curve - Per-Chain Pricing
 //
-// 7 chains compete for 1B CYRUS tokens.
+// 8 chains compete for 1B CYRUS tokens.
 // Allocation is proportional to each chain's USD contribution.
 // Price goes from $0.01 to $1.00 as each chain fills up.
 
 export const TOTAL_SUPPLY = 1_000_000_000  // 1B CYRUS total
 export const SALE_SUPPLY  = 900_000_000    // 900M for presale (100M LP reserve)
-export const FUND_TARGET  = 10_000_000     // $10M presale goal
+export const FUND_TARGET  = 100_000_000    // $100M presale goal
 export const MIN_PRICE    = 0.01           // Starting price per CYRUS
 export const MAX_PRICE    = 1.00           // Ending price per CYRUS
 
 // Per-chain allocation (percentage of total target)
 export const CHAIN_ALLOCATIONS: Record<string, number> = {
-  BITCOIN:   0.20, // 20% — $2M target
-  ETHEREUM:  0.25, // 25% — $2.5M target (incl. L2s)
-  BSC:       0.10, // 10% — $1M target
-  SOLANA:    0.15, // 15% — $1.5M target
-  XRP:       0.10, // 10% — $1M target
-  TON:       0.10, // 10% — $1M target
-  LUX:       0.10, // 10% — $1M target
+  BITCOIN:   0.20, // 20% — $20M target
+  ETHEREUM:  0.25, // 25% — $25M target (incl. L2s)
+  BSC:       0.10, // 10% — $10M target
+  SOLANA:    0.15, // 15% — $15M target
+  XRP:       0.10, // 10% — $10M target
+  TON:       0.10, // 10% — $10M target
+  LUX:       0.05, // 5%  — $5M target
+  ZOO:       0.05, // 5%  — $5M target
 }
 
 // Max USD target per chain
@@ -38,6 +39,7 @@ export const TREASURY_CHAIN_MAP: Record<string, string> = {
   XRP:      'XRP',
   TON:      'TON',
   LUX:      'LUX',
+  ZOO:      'ZOO',
 }
 
 export function getMintPrice(raisedUsd: number, chainId: string): number {

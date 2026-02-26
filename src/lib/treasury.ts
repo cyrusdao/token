@@ -1,10 +1,10 @@
 // Cyrus DAO Treasury — Real On-Chain Balance Fetcher
 //
 // Fetches actual treasury wallet balances from public APIs.
-// 7 consolidated chains: BTC, ETH (incl. L2s), BNB, SOL, XRP, TON, LUX
+// 8 consolidated chains: BTC, ETH (incl. L2s), BNB, SOL, XRP, TON, LUX, ZOO
 // Supports both mainnet and testnet modes for testing.
 
-export const FUND_TARGET = 10_000_000 // $10M presale goal
+export const FUND_TARGET = 100_000_000 // $100M presale goal
 
 // Check for testnet mode via env var or URL param
 const isTestnet = (): boolean => {
@@ -17,15 +17,16 @@ const isTestnet = (): boolean => {
 }
 
 // ============================================
-// MAINNET Configuration — Same 7 DAO wallets
+// MAINNET Configuration — Same 8 DAO wallets
 // ============================================
 const MAINNET_TREASURY = {
   BITCOIN:  'bc1qem8jywyuc9wtgf7y5n9tyq6tknpj3l85tzg9y6',
-  EVM:      '0xAaf3a7253c73a58f2713f454717C5338c6573d62', // ETH, Base, OP, Arb, BSC
+  EVM:      '0xAaf3a7253c73a58f2713f454717C5338c6573d62', // ETH, Base, OP, Arb, BSC, Zoo
   SOLANA:   'BPTZhkTdRwqnrb7PnWvi6SkCWQHcvUZrfaYvPkZ2YD8R',
   XRP:      'raBQUYdAhnnojJQ6Xi3eXztZ74ot24RDq1',
   TON:      'UQCx0_0l9AxIouVBxThCRAwO7Yrz6rpQGI-1CS7h-lwjqRTW',
   LUX:      '0x14542918a9032248ef30d9bc1d57983691e3ade4',
+  ZOO:      '0xAaf3a7253c73a58f2713f454717C5338c6573d62',
 } as const
 
 const MAINNET_RPCS: Record<string, string> = {
@@ -35,6 +36,7 @@ const MAINNET_RPCS: Record<string, string> = {
   arbitrum: 'https://arb1.arbitrum.io/rpc',
   bsc:      'https://bsc-dataseed.binance.org',
   lux:      'https://api.lux.network',
+  zoo:      'https://rpc.zoo.id',
 }
 
 const MAINNET_BTC_API = 'https://blockstream.info/api'
@@ -52,6 +54,7 @@ const TESTNET_TREASURY = {
   XRP:      'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh',
   TON:      'UQCx0_0l9AxIouVBxThCRAwO7Yrz6rpQGI-1CS7h-lwjqRTW',
   LUX:      '0x14542918a9032248ef30d9bc1d57983691e3ade4',
+  ZOO:      '0xAaf3a7253c73a58f2713f454717C5338c6573d62',
 } as const
 
 const TESTNET_RPCS: Record<string, string> = {
@@ -61,6 +64,7 @@ const TESTNET_RPCS: Record<string, string> = {
   arbitrum: 'https://sepolia-rollup.arbitrum.io/rpc',
   bsc:      'https://data-seed-prebsc-1-s1.binance.org:8545',
   lux:      'https://api.lux-test.network',
+  zoo:      'https://rpc-test.zoo.id',
 }
 
 const TESTNET_BTC_API = 'https://blockstream.info/testnet/api'
@@ -76,20 +80,7 @@ const TESTNET_PRICES: Record<string, number> = {
   XRP: 2.5,
   TON: 5,
   LUX: 0.5,
-}
-
-// ============================================
-// Seed balances (pre-launch activity / early deposits)
-// Real on-chain balances stack on top of these.
-// ============================================
-const SEED_USD: Record<string, number> = {
-  XRP:      378_400,
-  BITCOIN:   41_200,
-  ETHEREUM:  28_700,
-  SOLANA:    19_500,
-  BSC:       11_300,
-  TON:        6_800,
-  LUX:        2_100,
+  ZOO: 0.1,
 }
 
 // ============================================
@@ -112,6 +103,7 @@ const COINGECKO_IDS: Record<string, string> = {
   XRP: 'ripple',
   TON: 'the-open-network',
   LUX: 'lux-network',
+  ZOO: 'zoo-token',
 }
 
 export interface ChainBalance {
@@ -214,7 +206,7 @@ export async function fetchTreasuryBalances(): Promise<TreasuryState> {
 
   const [
     btcBalance, ethMainnet, ethBase, ethOptimism, ethArbitrum,
-    bnbBalance, solBalance, xrpBalance, tonBalance, luxBalance, prices,
+    bnbBalance, solBalance, xrpBalance, tonBalance, luxBalance, zooBalance, prices,
   ] = await Promise.all([
     fetchBtcBalance(),
     fetchEvmBalance(rpcs.ethereum, treasury.EVM),
@@ -226,21 +218,21 @@ export async function fetchTreasuryBalances(): Promise<TreasuryState> {
     fetchXrpBalance(),
     fetchTonBalance(),
     fetchEvmBalance(rpcs.lux, treasury.LUX),
+    fetchEvmBalance(rpcs.zoo, treasury.ZOO),
     fetchPrices(),
   ])
 
   const totalEth = ethMainnet + ethBase + ethOptimism + ethArbitrum
 
-  const seed = testnet ? {} : SEED_USD
-
   const chains: ChainBalance[] = [
-    { id: 'BITCOIN', name: testnet ? 'Bitcoin (Testnet)' : 'Bitcoin', symbol: 'BTC', color: '#F7931A', icon: '/images/tokens/bitcoin.png', nativeBalance: btcBalance, usdValue: btcBalance * (prices.BTC || 0) + (seed.BITCOIN || 0), price: prices.BTC || 0 },
-    { id: 'ETHEREUM', name: testnet ? 'Ethereum (Sepolia)' : 'Ethereum', symbol: 'ETH', color: '#627EEA', icon: '/images/tokens/ethereum.png', nativeBalance: totalEth, usdValue: totalEth * (prices.ETH || 0) + (seed.ETHEREUM || 0), price: prices.ETH || 0, subChains: testnet ? ['Sepolia', 'Base Sepolia', 'OP Sepolia', 'Arb Sepolia'] : ['Mainnet', 'Base', 'Optimism', 'Arbitrum'] },
-    { id: 'BSC', name: testnet ? 'BNB (Testnet)' : 'BNB Chain', symbol: 'BNB', color: '#F0B90B', icon: '/images/tokens/bnb.png', nativeBalance: bnbBalance, usdValue: bnbBalance * (prices.BNB || 0) + (seed.BSC || 0), price: prices.BNB || 0 },
-    { id: 'SOLANA', name: testnet ? 'Solana (Devnet)' : 'Solana', symbol: 'SOL', color: '#9945FF', icon: '/images/tokens/solana.png', nativeBalance: solBalance, usdValue: solBalance * (prices.SOL || 0) + (seed.SOLANA || 0), price: prices.SOL || 0 },
-    { id: 'XRP', name: testnet ? 'XRP (Testnet)' : 'XRP Ledger', symbol: 'XRP', color: '#23292F', icon: '/images/tokens/xrp.png', nativeBalance: xrpBalance, usdValue: xrpBalance * (prices.XRP || 0) + (seed.XRP || 0), price: prices.XRP || 0 },
-    { id: 'TON', name: testnet ? 'TON (Testnet)' : 'TON', symbol: 'TON', color: '#0088CC', icon: '/images/tokens/ton.png', nativeBalance: tonBalance, usdValue: tonBalance * (prices.TON || 0) + (seed.TON || 0), price: prices.TON || 0 },
-    { id: 'LUX', name: testnet ? 'Lux (Testnet)' : 'Lux', symbol: 'LUX', color: '#C9A227', icon: '/images/tokens/lux.png', nativeBalance: luxBalance, usdValue: luxBalance * (prices.LUX || 0) + (seed.LUX || 0), price: prices.LUX || 0 },
+    { id: 'BITCOIN', name: testnet ? 'Bitcoin (Testnet)' : 'Bitcoin', symbol: 'BTC', color: '#F7931A', icon: '/images/tokens/bitcoin.png', nativeBalance: btcBalance, usdValue: btcBalance * (prices.BTC || 0), price: prices.BTC || 0 },
+    { id: 'ETHEREUM', name: testnet ? 'Ethereum (Sepolia)' : 'Ethereum', symbol: 'ETH', color: '#627EEA', icon: '/images/tokens/ethereum.png', nativeBalance: totalEth, usdValue: totalEth * (prices.ETH || 0), price: prices.ETH || 0, subChains: testnet ? ['Sepolia', 'Base Sepolia', 'OP Sepolia', 'Arb Sepolia'] : ['Mainnet', 'Base', 'Optimism', 'Arbitrum'] },
+    { id: 'BSC', name: testnet ? 'BNB (Testnet)' : 'BNB Chain', symbol: 'BNB', color: '#F0B90B', icon: '/images/tokens/bnb.png', nativeBalance: bnbBalance, usdValue: bnbBalance * (prices.BNB || 0), price: prices.BNB || 0 },
+    { id: 'SOLANA', name: testnet ? 'Solana (Devnet)' : 'Solana', symbol: 'SOL', color: '#9945FF', icon: '/images/tokens/solana.png', nativeBalance: solBalance, usdValue: solBalance * (prices.SOL || 0), price: prices.SOL || 0 },
+    { id: 'XRP', name: testnet ? 'XRP (Testnet)' : 'XRP Ledger', symbol: 'XRP', color: '#23292F', icon: '/images/tokens/xrp.png', nativeBalance: xrpBalance, usdValue: xrpBalance * (prices.XRP || 0), price: prices.XRP || 0 },
+    { id: 'TON', name: testnet ? 'TON (Testnet)' : 'TON', symbol: 'TON', color: '#0088CC', icon: '/images/tokens/ton.png', nativeBalance: tonBalance, usdValue: tonBalance * (prices.TON || 0), price: prices.TON || 0 },
+    { id: 'LUX', name: testnet ? 'Lux (Testnet)' : 'Lux', symbol: 'LUX', color: '#C9A227', icon: '/images/tokens/lux.png', nativeBalance: luxBalance, usdValue: luxBalance * (prices.LUX || 0), price: prices.LUX || 0 },
+    { id: 'ZOO', name: testnet ? 'Zoo (Testnet)' : 'Zoo Network', symbol: 'ZOO', color: '#10B981', icon: '/images/tokens/zoo.png', nativeBalance: zooBalance, usdValue: zooBalance * (prices.ZOO || 0), price: prices.ZOO || 0 },
   ]
 
   chains.sort((a, b) => b.usdValue - a.usdValue)
@@ -263,6 +255,7 @@ const DEFAULT_CHAINS: ChainBalance[] = [
   { id: 'XRP', name: 'XRP Ledger', symbol: 'XRP', color: '#23292F', icon: '/images/tokens/xrp.png', nativeBalance: 0, usdValue: 0, price: 0 },
   { id: 'TON', name: 'TON', symbol: 'TON', color: '#0088CC', icon: '/images/tokens/ton.png', nativeBalance: 0, usdValue: 0, price: 0 },
   { id: 'LUX', name: 'Lux', symbol: 'LUX', color: '#C9A227', icon: '/images/tokens/lux.png', nativeBalance: 0, usdValue: 0, price: 0 },
+  { id: 'ZOO', name: 'Zoo Network', symbol: 'ZOO', color: '#10B981', icon: '/images/tokens/zoo.png', nativeBalance: 0, usdValue: 0, price: 0 },
 ]
 
 export function useTreasury() {
