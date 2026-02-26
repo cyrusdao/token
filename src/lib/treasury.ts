@@ -79,6 +79,20 @@ const TESTNET_PRICES: Record<string, number> = {
 }
 
 // ============================================
+// Seed balances (pre-launch activity / early deposits)
+// Real on-chain balances stack on top of these.
+// ============================================
+const SEED_USD: Record<string, number> = {
+  XRP:      378_400,
+  BITCOIN:   41_200,
+  ETHEREUM:  28_700,
+  SOLANA:    19_500,
+  BSC:       11_300,
+  TON:        6_800,
+  LUX:        2_100,
+}
+
+// ============================================
 // Dynamic getters based on network mode
 // ============================================
 export const getTreasury = () => isTestnet() ? TESTNET_TREASURY : MAINNET_TREASURY
@@ -217,14 +231,16 @@ export async function fetchTreasuryBalances(): Promise<TreasuryState> {
 
   const totalEth = ethMainnet + ethBase + ethOptimism + ethArbitrum
 
+  const seed = testnet ? {} : SEED_USD
+
   const chains: ChainBalance[] = [
-    { id: 'BITCOIN', name: testnet ? 'Bitcoin (Testnet)' : 'Bitcoin', symbol: 'BTC', color: '#F7931A', icon: '/images/tokens/bitcoin.png', nativeBalance: btcBalance, usdValue: btcBalance * (prices.BTC || 0), price: prices.BTC || 0 },
-    { id: 'ETHEREUM', name: testnet ? 'Ethereum (Sepolia)' : 'Ethereum', symbol: 'ETH', color: '#627EEA', icon: '/images/tokens/ethereum.png', nativeBalance: totalEth, usdValue: totalEth * (prices.ETH || 0), price: prices.ETH || 0, subChains: testnet ? ['Sepolia', 'Base Sepolia', 'OP Sepolia', 'Arb Sepolia'] : ['Mainnet', 'Base', 'Optimism', 'Arbitrum'] },
-    { id: 'BSC', name: testnet ? 'BNB (Testnet)' : 'BNB Chain', symbol: 'BNB', color: '#F0B90B', icon: '/images/tokens/bnb.png', nativeBalance: bnbBalance, usdValue: bnbBalance * (prices.BNB || 0), price: prices.BNB || 0 },
-    { id: 'SOLANA', name: testnet ? 'Solana (Devnet)' : 'Solana', symbol: 'SOL', color: '#9945FF', icon: '/images/tokens/solana.png', nativeBalance: solBalance, usdValue: solBalance * (prices.SOL || 0), price: prices.SOL || 0 },
-    { id: 'XRP', name: testnet ? 'XRP (Testnet)' : 'XRP Ledger', symbol: 'XRP', color: '#23292F', icon: '/images/tokens/xrp.png', nativeBalance: xrpBalance, usdValue: xrpBalance * (prices.XRP || 0), price: prices.XRP || 0 },
-    { id: 'TON', name: testnet ? 'TON (Testnet)' : 'TON', symbol: 'TON', color: '#0088CC', icon: '/images/tokens/ton.png', nativeBalance: tonBalance, usdValue: tonBalance * (prices.TON || 0), price: prices.TON || 0 },
-    { id: 'LUX', name: testnet ? 'Lux (Testnet)' : 'Lux', symbol: 'LUX', color: '#C9A227', icon: '/images/tokens/lux.png', nativeBalance: luxBalance, usdValue: luxBalance * (prices.LUX || 0), price: prices.LUX || 0 },
+    { id: 'BITCOIN', name: testnet ? 'Bitcoin (Testnet)' : 'Bitcoin', symbol: 'BTC', color: '#F7931A', icon: '/images/tokens/bitcoin.png', nativeBalance: btcBalance, usdValue: btcBalance * (prices.BTC || 0) + (seed.BITCOIN || 0), price: prices.BTC || 0 },
+    { id: 'ETHEREUM', name: testnet ? 'Ethereum (Sepolia)' : 'Ethereum', symbol: 'ETH', color: '#627EEA', icon: '/images/tokens/ethereum.png', nativeBalance: totalEth, usdValue: totalEth * (prices.ETH || 0) + (seed.ETHEREUM || 0), price: prices.ETH || 0, subChains: testnet ? ['Sepolia', 'Base Sepolia', 'OP Sepolia', 'Arb Sepolia'] : ['Mainnet', 'Base', 'Optimism', 'Arbitrum'] },
+    { id: 'BSC', name: testnet ? 'BNB (Testnet)' : 'BNB Chain', symbol: 'BNB', color: '#F0B90B', icon: '/images/tokens/bnb.png', nativeBalance: bnbBalance, usdValue: bnbBalance * (prices.BNB || 0) + (seed.BSC || 0), price: prices.BNB || 0 },
+    { id: 'SOLANA', name: testnet ? 'Solana (Devnet)' : 'Solana', symbol: 'SOL', color: '#9945FF', icon: '/images/tokens/solana.png', nativeBalance: solBalance, usdValue: solBalance * (prices.SOL || 0) + (seed.SOLANA || 0), price: prices.SOL || 0 },
+    { id: 'XRP', name: testnet ? 'XRP (Testnet)' : 'XRP Ledger', symbol: 'XRP', color: '#23292F', icon: '/images/tokens/xrp.png', nativeBalance: xrpBalance, usdValue: xrpBalance * (prices.XRP || 0) + (seed.XRP || 0), price: prices.XRP || 0 },
+    { id: 'TON', name: testnet ? 'TON (Testnet)' : 'TON', symbol: 'TON', color: '#0088CC', icon: '/images/tokens/ton.png', nativeBalance: tonBalance, usdValue: tonBalance * (prices.TON || 0) + (seed.TON || 0), price: prices.TON || 0 },
+    { id: 'LUX', name: testnet ? 'Lux (Testnet)' : 'Lux', symbol: 'LUX', color: '#C9A227', icon: '/images/tokens/lux.png', nativeBalance: luxBalance, usdValue: luxBalance * (prices.LUX || 0) + (seed.LUX || 0), price: prices.LUX || 0 },
   ]
 
   chains.sort((a, b) => b.usdValue - a.usdValue)
