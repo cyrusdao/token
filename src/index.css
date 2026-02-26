@@ -54,12 +54,21 @@
 
 @layer base {
   * { @apply border-border; }
-  body { 
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  body {
     @apply bg-background text-foreground font-sans antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
-  html { scroll-behavior: smooth; }
+  #root {
+    /* Full width — let sections/containers handle their own max-widths */
+    width: 100%;
+    overflow-x: hidden;
+  }
 }
 
 @layer utilities {

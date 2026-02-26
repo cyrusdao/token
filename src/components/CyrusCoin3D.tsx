@@ -298,7 +298,7 @@ const CyrusCoin3D = ({ showRings = true, size = "lg" }: CyrusCoin3DProps) => {
   const sizeConfig = {
     sm: { classes: "w-10 h-10 rounded-full overflow-hidden", camera: 8.5, fov: 32 },
     md: { classes: "w-24 h-24 rounded-full overflow-hidden", camera: 7, fov: 34 },
-    lg: { classes: "w-full h-full min-h-[600px]", camera: 11, fov: 48 }  // Camera pulled back for bigger coin
+    lg: { classes: "w-full h-full", camera: 11, fov: 48 }
   };
 
   const config = sizeConfig[size];
@@ -319,7 +319,7 @@ const CyrusCoin3D = ({ showRings = true, size = "lg" }: CyrusCoin3DProps) => {
         camera={{ position: [0, 0, config.camera], fov: config.fov }}
         gl={{ antialias: true, alpha: true }}
         dpr={[1, 2]}
-        style={{ overflow: 'visible' }}
+        style={{ width: '100%', height: '100%' }}
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.5} />

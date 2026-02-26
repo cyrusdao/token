@@ -8,22 +8,22 @@ const Hero = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "fa";
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-background">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Ambient gradient glow */}
       <div className="absolute inset-0 bg-gradient-hero" />
       
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 geometric-pattern opacity-50" />
 
-      {/* 3D Coin - Background layer - always on flex-end (right in LTR, left in RTL) */}
-      <div className="absolute inset-0 pointer-events-auto z-0 overflow-visible">
+      {/* 3D Coin - Background layer - always on right half */}
+      <div className="absolute inset-0 pointer-events-auto z-0">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
-          className="absolute inset-0 flex items-center justify-end overflow-visible"
+          className="absolute inset-0 flex items-center justify-end"
         >
-          <div className="w-[55%] h-full translate-x-[35%]">
+          <div className="w-[60%] h-full min-h-[600px] translate-x-[20%]">
             <CyrusCoin3D />
           </div>
         </motion.div>
