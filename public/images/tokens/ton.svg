@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <circle cx="50" cy="50" r="50" fill="#0098EA"/>
+  <!-- TON diamond logo -->
+  <path d="M50 18L75 45L50 82L25 45L50 18Z" fill="white"/>
+  <path d="M50 18L75 45L50 50L25 45L50 18Z" fill="white" fill-opacity="0.9"/>
+  <path d="M50 50L75 45L50 82L25 45L50 50Z" fill="white" fill-opacity="0.7"/>
+  <path d="M50 18L50 82" stroke="#0098EA" stroke-width="2" stroke-opacity="0.3"/>
+</svg>
