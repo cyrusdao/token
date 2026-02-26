@@ -15,15 +15,15 @@ const Hero = () => {
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 geometric-pattern opacity-50" />
 
-      {/* 3D Coin - Background layer - always on right half */}
+      {/* 3D Coin - Background layer - right half on desktop, centered on mobile */}
       <div className="absolute inset-0 pointer-events-auto z-0">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
-          className="absolute inset-0 flex items-center justify-end"
+          className="absolute inset-0 flex items-center justify-center sm:justify-end"
         >
-          <div className="w-[60%] h-full min-h-[600px] translate-x-[20%]">
+          <div className="w-[90%] sm:w-[60%] h-full min-h-[400px] sm:min-h-[600px] sm:translate-x-[20%]">
             <CyrusCoin3D />
           </div>
         </motion.div>
