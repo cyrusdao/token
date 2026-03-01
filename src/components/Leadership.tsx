@@ -21,7 +21,7 @@ const teamMembers: TeamMember[] = [
       instagram: "https://www.instagram.com/cyruspahlavi",
       linkedin: "https://www.linkedin.com/in/cyruspahlavi",
     },
-  },
+  },/*
   {
     id: "kamran",
     image: "/assets/images/kamran-pahlavi.png",
@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
       instagram: "https://www.instagram.com/daragallopin",
       linkedin: "https://www.linkedin.com/in/daragallopin",
     },
-  },
+  },*/
 ];
 
 const Leadership = () => {
