@@ -5,13 +5,13 @@
 import type { ChainConfig, DAOWalletConfig, DonationAsset } from './types';
 
 const DEPOSIT_ADDRESSES = {
-  BITCOIN: 'bc1qem8jywyuc9wtgf7y5n9tyq6tknpj3l85tzg9y6',
-  EVM:     '0xAaf3a7253c73a58f2713f454717C5338c6573d62', // ETH, Base, Optimism, Arbitrum, BSC, Zoo
-  SOLANA:  'BPTZhkTdRwqnrb7PnWvi6SkCWQHcvUZrfaYvPkZ2YD8R',
-  XRP:     'raBQUYdAhnnojJQ6Xi3eXztZ74ot24RDq1',
-  XRP_MEMO:'3943970694',
-  TON:     'UQCx0_0l9AxIouVBxThCRAwO7Yrz6rpQGI-1CS7h-lwjqRTW',
-  TON_MEMO:'GEMGW3X626VA3',
+  BITCOIN: '3CUTagummxA2SMFrS2vxGKyLj4gtQ9mrbW',
+  EVM:     '0xC8C581EDeB8d739F1Daf2D508C3B9CB4e0E051eF', // ETH, Base, Optimism, Arbitrum, BSC, Zoo
+  SOLANA:  '3CQYt4bCfGNyetaE3z6i3xv3RVirYqak9KtkpMJeii6M',
+  XRP:     'rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg',
+  XRP_MEMO:'423635759',
+  TON:     'UQCZ80nkghS87gE1AR8bYI_5m5CSNhUxL5gXgXQllJboukzl',
+  TON_MEMO:'NO MEMO',
   LUX:     '0x14542918a9032248ef30d9bc1d57983691e3ade4',
 };
 
