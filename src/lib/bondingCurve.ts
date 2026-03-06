@@ -1,6 +1,6 @@
 // Cyrus DAO Bonding Curve - Per-Chain Pricing
 //
-// 8 chains compete for 1B CYRUS tokens.
+// 3 chains compete for 1B CYRUS tokens.
 // Allocation is proportional to each chain's USD contribution.
 // Price goes from $0.01 to $1.00 as each chain fills up.
 
@@ -12,14 +12,9 @@ export const MAX_PRICE    = 1.00           // Ending price per CYRUS
 
 // Per-chain allocation (percentage of total target)
 export const CHAIN_ALLOCATIONS: Record<string, number> = {
-  BITCOIN:   0.20, // 20% — $20M target
-  ETHEREUM:  0.25, // 25% — $25M target (incl. L2s)
-  BSC:       0.10, // 10% — $10M target
-  SOLANA:    0.15, // 15% — $15M target
-  XRP:       0.10, // 10% — $10M target
-  TON:       0.10, // 10% — $10M target
-  LUX:       0.05, // 5%  — $5M target
-  ZOO:       0.05, // 5%  — $5M target
+  BITCOIN:   0.35, // 35% — $35M target
+  ETHEREUM:  0.40, // 40% — $40M target (incl. L2s)
+  SOLANA:    0.25, // 25% — $25M target
 }
 
 // Max USD target per chain
@@ -34,12 +29,7 @@ export const TREASURY_CHAIN_MAP: Record<string, string> = {
   BASE:     'ETHEREUM',
   OPTIMISM: 'ETHEREUM',
   ARBITRUM: 'ETHEREUM',
-  BSC:      'BSC',
   SOLANA:   'SOLANA',
-  XRP:      'XRP',
-  TON:      'TON',
-  LUX:      'LUX',
-  ZOO:      'ZOO',
 }
 
 export function getMintPrice(raisedUsd: number, chainId: string): number {

@@ -1,18 +1,13 @@
 // Cyrus DAO - Supported Networks for Presale
-// 8 native chains: BTC, ETH, SOL, BNB, XRP, TON, LUX, ZOO
+// 3 native chains: BTC, ETH, SOL
 // CYRUS claimable on Pars Network after mint date (Nowruz, March 20)
 
 import type { ChainConfig, DAOWalletConfig, DonationAsset } from './types';
 
 const DEPOSIT_ADDRESSES = {
   BITCOIN: '3CUTagummxA2SMFrS2vxGKyLj4gtQ9mrbW',
-  EVM:     '0xC8C581EDeB8d739F1Daf2D508C3B9CB4e0E051eF', // ETH, Base, Optimism, Arbitrum, BSC, Zoo
+  EVM:     '0xC8C581EDeB8d739F1Daf2D508C3B9CB4e0E051eF', // ETH, Base, Optimism, Arbitrum
   SOLANA:  '3CQYt4bCfGNyetaE3z6i3xv3RVirYqak9KtkpMJeii6M',
-  XRP:     'rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg',
-  XRP_MEMO:'423635759',
-  TON:     'UQCZ80nkghS87gE1AR8bYI_5m5CSNhUxL5gXgXQllJboukzl',
-  TON_MEMO:'NO MEMO',
-  LUX:     '0x14542918a9032248ef30d9bc1d57983691e3ade4',
 };
 
 export const CYRUS_DAO_WALLET: DAOWalletConfig = {
@@ -26,12 +21,7 @@ export const CYRUS_DAO_WALLET: DAOWalletConfig = {
     BASE:     DEPOSIT_ADDRESSES.EVM,
     OPTIMISM: DEPOSIT_ADDRESSES.EVM,
     ARBITRUM: DEPOSIT_ADDRESSES.EVM,
-    BSC:      DEPOSIT_ADDRESSES.EVM,
     SOLANA:   DEPOSIT_ADDRESSES.SOLANA,
-    XRP:      DEPOSIT_ADDRESSES.XRP,
-    TON:      DEPOSIT_ADDRESSES.TON,
-    LUX:      DEPOSIT_ADDRESSES.LUX,
-    ZOO:      DEPOSIT_ADDRESSES.EVM,
   }
 };
 
@@ -66,40 +56,10 @@ export const CYRUS_CHAINS: ChainConfig[] = [
     depositAddress: DEPOSIT_ADDRESSES.EVM,
   },
   {
-    id: 'BSC', name: 'BNB Chain', symbol: 'BNB', chainId: 56, type: 'evm',
-    color: '#F0B90B', icon: '/images/tokens/bnb.png', explorer: 'https://bscscan.com',
-    rpc: 'https://bsc-dataseed.binance.org', nativeAsset: 'BNB', decimals: 18, enabled: true,
-    depositAddress: DEPOSIT_ADDRESSES.EVM,
-  },
-  {
     id: 'SOLANA', name: 'Solana', symbol: 'SOL', chainId: null, type: 'solana',
     color: '#9945FF', icon: '/images/tokens/solana.png', explorer: 'https://explorer.solana.com',
     rpc: 'https://api.mainnet-beta.solana.com', nativeAsset: 'SOL', decimals: 9, enabled: true,
     depositAddress: DEPOSIT_ADDRESSES.SOLANA, minAmount: 0.05,
-  },
-  {
-    id: 'XRP', name: 'XRP Ledger', symbol: 'XRP', chainId: null, type: 'xrp',
-    color: '#346AA9', icon: '/images/tokens/xrp.png', explorer: 'https://xrpscan.com',
-    nativeAsset: 'XRP', decimals: 6, enabled: true,
-    depositAddress: DEPOSIT_ADDRESSES.XRP, memo: DEPOSIT_ADDRESSES.XRP_MEMO,
-  },
-  {
-    id: 'TON', name: 'TON', symbol: 'TON', chainId: -239, type: 'ton',
-    color: '#0088CC', icon: '/images/tokens/ton.png', explorer: 'https://tonscan.org',
-    nativeAsset: 'TON', decimals: 9, enabled: true,
-    depositAddress: DEPOSIT_ADDRESSES.TON, memo: DEPOSIT_ADDRESSES.TON_MEMO,
-  },
-  {
-    id: 'LUX', name: 'Lux', symbol: 'LUX', chainId: 96369, type: 'evm',
-    color: '#C9A227', icon: '/images/tokens/lux.png', explorer: 'https://explore.lux.network',
-    rpc: 'https://api.lux.network', nativeAsset: 'LUX', decimals: 18, enabled: true,
-    depositAddress: DEPOSIT_ADDRESSES.LUX,
-  },
-  {
-    id: 'ZOO', name: 'Zoo Network', symbol: 'ZOO', chainId: 200200, type: 'evm',
-    color: '#10B981', icon: '/images/tokens/zoo.png', explorer: 'https://explore.zoo.id',
-    rpc: 'https://rpc.zoo.id', nativeAsset: 'ZOO', decimals: 18, enabled: true,
-    depositAddress: DEPOSIT_ADDRESSES.EVM,
   },
 ];
 
@@ -124,24 +84,9 @@ export const MINT_ASSETS: Record<string, DonationAsset[]> = {
     { symbol: 'ETH', name: 'Ethereum', decimals: 18, logo: '/images/tokens/ethereum.png', enabled: true },
     { symbol: 'USDC', name: 'USD Coin', decimals: 6, contractAddress: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831', logo: '/images/tokens/ethereum.png', enabled: true },
   ],
-  BSC: [
-    { symbol: 'BNB', name: 'BNB', decimals: 18, logo: '/images/tokens/bnb.png', enabled: true },
-  ],
   SOLANA: [
     { symbol: 'SOL', name: 'Solana', decimals: 9, logo: '/images/tokens/solana.png', enabled: true, minAmount: 0.05 },
     { symbol: 'USDC', name: 'USD Coin', decimals: 6, contractAddress: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', logo: '/images/tokens/solana.png', enabled: true },
-  ],
-  XRP: [
-    { symbol: 'XRP', name: 'XRP', decimals: 6, logo: '/images/tokens/xrp.png', enabled: true },
-  ],
-  TON: [
-    { symbol: 'TON', name: 'TON', decimals: 9, logo: '/images/tokens/ton.png', enabled: true },
-  ],
-  LUX: [
-    { symbol: 'LUX', name: 'Lux', decimals: 18, logo: '/images/tokens/lux.png', enabled: true },
-  ],
-  ZOO: [
-    { symbol: 'ZOO', name: 'Zoo', decimals: 18, logo: '/images/tokens/zoo.png', enabled: true },
   ],
 };
 
